@@ -8,7 +8,7 @@ import Header from "./Components/Header";
 
 function App() {
   return (
-    <Router basename="/cosmoNotes/">
+    <Router basename="/<nome-do-repositorio>/">
       <Header />
       <Routes>
         <Route path="/" element={<Home />} />
