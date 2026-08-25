@@ -6,7 +6,7 @@ import Dicionario from "./Pages/Dicionario/Dicionario";
 import Exercicios from "./Pages/Exercicios/Exercicios";
 import Header from "./Components/Header";
 
-const repoName = "/cosmoNotes"
+const repoName = "/cosmoNotes/"
 
 function App() {
   return (
