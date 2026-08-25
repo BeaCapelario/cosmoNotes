@@ -6,11 +6,9 @@ import Dicionario from "./Pages/Dicionario/Dicionario";
 import Exercicios from "./Pages/Exercicios/Exercicios";
 import Header from "./Components/Header";
 
-const repoName = "/cosmoNotes/"
-
 function App() {
   return (
-    <Router basename={repoName}>
+    <Router basename="/cosmoNotes/">
       <Header />
       <Routes>
         <Route path="/" element={<Home />} />

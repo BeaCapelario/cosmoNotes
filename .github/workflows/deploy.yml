@@ -18,10 +18,10 @@ jobs:
   build:
     runs-on: ubuntu-latest
     steps:
-      - name: Checkout Code
+      - name: Checkout repository
         uses: actions/checkout@v7
 
-      - name: Setup Node.js
+      - name: Set up Node.js
         uses: actions/setup-node@v7
         with:
           node-version: 20
