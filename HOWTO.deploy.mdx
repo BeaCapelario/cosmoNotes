@@ -1,0 +1,100 @@
+# 🚀 Como Fazer o Deploy no GitHub Pages
+
+Este projeto está configurado para publicar automaticamente no **GitHub Pages** usando o **GitHub Actions** sempre que houver alterações na branch `main`.
+
+Siga os passos abaixo para ativar as publicações no seu repositório e garantir que as rotas continuem funcionando perfeitamente conforme você adiciona novas páginas e componentes.
+
+---
+
+## ⚙️ 1. Ativando o GitHub Pages no seu Repositório
+
+Para que o GitHub Actions consiga publicar o site automaticamente, precisamos habilitar a fonte correta nas configurações:
+
+1. Acesse o seu repositório no **GitHub.com**.
+2. Clique na aba **Settings** (Configurações) no topo da página.
+3. No menu lateral esquerdo, clique em **Pages** (na seção *Code and automation*).
+4. Em **Build and deployment** > **Source**, altere a opção para **GitHub Actions**.
+
+> ℹ️ **Nota:** Após ativar isso, qualquer `push` ou Pull Request aceito na branch `main` vai disparar o processo de build e deploy automaticamente!
+
+---
+
+## 🛠️ 2. Configurações de Nome de Repositório (Caso Mude de Nome)
+
+Se em algum momento você alterar o nome deste repositório, lembre-se de atualizar o caminho base em dois arquivos:
+
+### A. `vite.config.js`
+
+Garanta que a propriedade `base` tenha o nome do repositório entre barras `/`:
+
+```jsx
+export default defineConfig({
+  plugins: [react()],
+  base: '/<nome-do-repositorio>/', // Exemplo: '/cosmoNotes/'
+});
+```
+
+### B. Base do React Router
+
+No arquivo onde o <BrowserRouter> está configurado (geralmente src/main.jsx ou src/App.jsx), mantenha a propriedade basename:
+
+```jsx
+<BrowserRouter basename="/<nome-do-repositorio>">
+  <App />
+</BrowserRouter>
+```
+
+## ⚠️ 3. Boas Práticas Importantes de Desenvolvimento
+
+Conforme você for criando novos componentes e telas, atente-se a estes dois pontos:
+
+### 🔤 Diferenciação de Maiúsculas e Minúsculas (Case-Sensitivity)
+
+O GitHub Actions roda em servidores Linux, que são estritamente sensíveis a letras maiúsculas e minúsculas nos nomes de arquivos e pastas:
+
+- Certifique-se sempre de que o import esteja com a escrita idêntica ao nome da pasta/arquivo no disco:
+
+```jsx
+// ✅ Correto (se a pasta for 'pages' minúscula e o arquivo 'Home.jsx')
+import Home from './pages/Home';
+
+// ❌ Vai quebrar no GitHub se a pasta no disco estiver com 'p' minúsculo
+import Home from './Pages/Home';
+
+```
+
+### 🔄 Rotas do React Router (Correção do Erro 404 ao Atualizar)
+
+Como o GitHub Pages é um servidor de arquivos estáticos, recarregar a página (F5) em uma sub-rota como `/sobre` causaria um erro 404. Para resolver isso, o projeto conta com dois scripts essenciais:
+
+1. `public/404.html` — Captura o erro 404 e redireciona de volta para a aplicação.
+
+2. `index.html` — Decodifica a rota e entrega para o React Router carregar a página correta.
+
+> ⚠️ Atenção: Não delete o arquivo public/404.html nem o script adicionado na tag <head> do index.html.
+
+## 🧪 4. Como Testar o Build Localmente
+
+Antes de subir alterações, você pode validar no terminal se o build vai passar sem erros:
+
+```bash
+# 1. Instala as dependências
+npm install
+
+# 2. Roda o build de produção
+npm run build
+```
+
+Se o comando npm run build finalizar com sucesso no seu VS Code, o GitHub Actions também passará sem problemas.
+
+## 🌐 5. Como Acessar o Site Publicado
+
+Após finalizar o deploy:
+
+1. Acesse a aba Actions no topo do seu repositório no GitHub.
+
+2. Clique no workflow mais recente chamado Deploy to GitHub Pages.
+
+3. No passo deploy, clique no link gerado: `https://<seu-usuario>.github.io/<nome-do-repositorio>/`
+
+---
