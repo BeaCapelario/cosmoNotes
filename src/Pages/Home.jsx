@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 
-export default function Quiz() {
+export default function Home() {
   // Estado para armazenar dados (opcional)
   const [data, setData] = useState(null);
 
