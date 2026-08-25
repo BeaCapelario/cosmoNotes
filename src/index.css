@@ -1,0 +1,40 @@
+@import url('https://fonts.googleapis.com/css2?family=Fredoka+One&family=Quicksand:wght@400;500;700&display=swap');
+
+:root {
+  /* 1. Paleta de Cores: Brilho Estelar (Tema Claro) */
+  --color-background: #F9F4FF;
+  --color-surface: #FFFFFF;
+  --color-text: #4A4063;
+  --color-heading: #2E2545;
+  --color-primary: #FF79C6;
+  --color-primary-light: #FFB8E2;
+  --color-secondary: #00F5D4;
+  --color-accent: #FFEE58;
+  --color-border: #E8DFF5;
+  --gradient-magic: linear-gradient(135deg, var(--color-primary), var(--color-secondary));
+
+  /* 2. Tipografia */
+  --font-body: 'Quicksand', system-ui, sans-serif;
+  --font-heading: 'Fredoka One', cursive;
+  
+  /* 3. Utilitários */
+  --shadow-cute: 6px 6px 0px var(--color-border); 
+  --border-radius: 12px; 
+}
+
+body {
+  margin: 0;
+  font-family: var(--font-body);
+  font-size: 18px;
+  line-height: 1.6;
+  color: var(--color-text);
+  background-color: var(--color-background);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+h1, h2, h3, h4, h5 {
+  font-family: var(--font-heading);
+  color: var(--color-heading);
+  letter-spacing: 1px; 
+}
