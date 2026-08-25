@@ -1,9 +1,23 @@
 [
-    {
-        "id": " ",
-        "termo": " ",
-        "categoria": "",
-        "significado":" ",
-        "estrela": true
-    }
+  {
+    "id": "1",
+    "termo": "Hypervisor",
+    "categoria": "Virtualização",
+    "significado": "Software que cria e roda máquinas virtuais (VMs), dividindo os recursos físicos de um servidor.",
+    "estrela": true
+  },
+  {
+    "id": "2",
+    "termo": "RAID 10",
+    "categoria": "Hardware",
+    "significado": "Combinação de espelhamento (RAID 1) e divisão de dados (RAID 0), oferecendo alto desempenho e redundância máxima.",
+    "estrela": false
+  },
+  {
+    "id": "3",
+    "termo": "Bash Script",
+    "categoria": "Automação",
+    "significado": "Arquivo de texto contendo uma série de comandos que são executados pelo shell do Linux para automatizar tarefas.",
+    "estrela": true
+  }
 ]

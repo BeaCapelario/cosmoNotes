@@ -1,0 +1,39 @@
+.dicionario-main {
+  flex: 1;
+  width: 100%;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 40px 24px;
+  display: flex;
+  flex-direction: column;
+  gap: 40px;
+  box-sizing: border-box;
+}
+
+.dicionario-header {
+  text-align: center;
+}
+
+.dicionario-title {
+  font-family: var(--font-heading);
+  color: var(--color-heading);
+  font-size: 42px;
+  margin: 0 0 10px 0;
+  text-shadow: 2px 2px 0px var(--color-border);
+}
+
+.dicionario-subtitle {
+  font-family: var(--font-body);
+  color: var(--color-text);
+  font-size: 16px;
+  margin: 0;
+  font-weight: 500;
+}
+
+.flashcards-grid {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 24px;
+  width: 100%;
+}

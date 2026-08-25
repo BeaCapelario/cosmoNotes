@@ -1,7 +1,7 @@
 @import url('https://fonts.googleapis.com/css2?family=Fredoka+One&family=Quicksand:wght@400;500;700&display=swap');
 
 :root {
-  /* 1. Paleta de Cores: Brilho Estelar (Tema Claro) */
+  /* 1. Paleta de Cores */
   --color-background: #F9F4FF;
   --color-surface: #FFFFFF;
   --color-text: #4A4063;
@@ -37,4 +37,20 @@ h1, h2, h3, h4, h5 {
   font-family: var(--font-heading);
   color: var(--color-heading);
   letter-spacing: 1px; 
+}
+
+html, body {
+  margin: 0;
+  padding: 0;
+  height: 100%;
+}
+
+#root {
+  min-height: 100vh; 
+  display: flex;
+  flex-direction: column;
+}
+
+main, .content, .container { 
+  flex: 1; /* Faz o conteúdo principal esticar e ocupar todo o espaço vazio restante */
 }
