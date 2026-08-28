@@ -2,19 +2,35 @@ import React, { useState } from "react";
 import { FaStar, FaRegStar } from "react-icons/fa6";
 import "./flashcard.css";
 
-function FlashCard({ id, termo, significado, estrela }) {
+function FlashCard({
+  id,
+  termo,
+  categoria,
+  significado,
+  exemplo,
+  analogia,
+  estrela = false,
+  onToggleStar,
+}) {
   const [isFlipped, setIsFlipped] = useState(false);
   const [isStarred, setIsStarred] = useState(estrela);
 
-  // Manipulador de clique para girar o card
+  // Validação para garantir que não são apenas espaços vazios
+  const temSignificado = significado && significado.trim().length > 0;
+  const temAnalogia = analogia && analogia.trim().length > 0;
+  const temExemplo = exemplo && exemplo.trim().length > 0;
+
   const handleCardClick = (e) => {
-    if (e.target.closest(".star-btn")) return;
+    // Não vira o card se o clique for na estrela ou em links/botões
+    if (e.target.closest(".interactive-action")) return;
     setIsFlipped(!isFlipped);
   };
 
   const handleStarClick = (e) => {
-    e.stopPropagation(); 
-    setIsStarred(!isStarred);
+    e.stopPropagation();
+    const newStarred = !isStarred;
+    setIsStarred(newStarred);
+    if (onToggleStar) onToggleStar(id, newStarred);
   };
 
   return (
@@ -26,30 +42,59 @@ function FlashCard({ id, termo, significado, estrela }) {
         {/* ================= FRENTE ================= */}
         <div className="flashcard-front">
           <div className="card-top">
-            <span className="card-badge">{termo}</span>
+            <span className="card-badge">{categoria || "Geral"}</span>
             <button
-              className="star-btn"
+              type="button"
+              className="star-btn interactive-action"
               onClick={handleStarClick}
               aria-label="Favoritar termo"
+              title="Favoritar termo"
             >
               {isStarred ? <FaStar className="star-active" /> : <FaRegStar />}
             </button>
           </div>
+
           <div className="card-center">
             <h2 className="card-term">{termo}</h2>
           </div>
-          <div className="card-tip">Clique para ver o significado</div>
+
+          <div className="card-tip">Clique para ver detalhes ↺</div>
         </div>
 
-        {/* ================= VERSO ================= */}
+        {/* ================= VERSO (TODAS AS INFORMAÇÕES VISÍVEIS) ================= */}
         <div className="flashcard-back">
           <div className="card-top">
-            <span className="card-badge-back">{termo}</span>
+            <span className="card-badge-back">{categoria || "Geral"}</span>
+            <span className="back-term-title">{termo}</span>
           </div>
-          <div className="card-center-back">
-            <p className="card-meaning">{significado}</p>
+
+          <div className="card-content-scroll">
+            {/* 1. Significado */}
+            {temSignificado && (
+              <div className="info-section">
+                <span className="section-tag">Conceito</span>
+                <p className="card-meaning">{significado}</p>
+              </div>
+            )}
+
+            {/* 2. Analogia */}
+            {temAnalogia && (
+              <div className="info-section analogy-box">
+                <span className="section-tag tag-analogy">💡 Analogia</span>
+                <p className="card-analogy">"{analogia}"</p>
+              </div>
+            )}
+
+            {/* 3. Exemplo */}
+            {temExemplo && (
+              <div className="info-section example-box">
+                <span className="section-tag tag-example">💻 Exemplo Prático</span>
+                <p className="card-example">{exemplo}</p>
+              </div>
+            )}
           </div>
-          <div className="card-tip">Clique para voltar</div>
+
+          <div className="card-tip">Clique para voltar ↺</div>
         </div>
       </section>
     </div>

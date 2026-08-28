@@ -6,7 +6,7 @@ function Home() {
   return (
     <main className="home-main">
       <section className="welcome-section">
-        <span className="welcome-badge">Estudos sobre TI e Infraestrutura</span>
+        <span className="welcome-badge">Estudos sobre TI</span>
         <h1 className="welcome-title">cosmoNotes</h1>
         <p className="welcome-subtitle">
           Organizando meu aprendizado de uma forma dinâmica.

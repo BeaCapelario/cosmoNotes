@@ -1,19 +1,25 @@
+/* ==========================================================================
+   FLASHCARD COMPONENT STYLES - cosmoNotes
+   ========================================================================== */
+
+/* 1. CONTAINER & 3D WRAPPER
+   -------------------------------------------------------------------------- */
 .flashcard-container {
   background-color: transparent;
   width: 100%;
-  max-width: 320px;
-  height: 220px;
+  max-width: 340px;
+  height: 260px;
   perspective: 1200px;
   cursor: pointer;
-  margin: 15px;
+  margin: 12px;
   box-sizing: border-box;
+  user-select: none;
 }
 
 .flashcard-inner {
   position: relative;
   width: 100%;
   height: 100%;
-  text-align: center;
   transition: transform 0.6s cubic-bezier(0.4, 0, 0.2, 1);
   transform-style: preserve-3d;
 }
@@ -22,120 +28,117 @@
   transform: rotateY(180deg);
 }
 
+/* 2. FACES BASE (FRENTE E VERSO)
+   -------------------------------------------------------------------------- */
 .flashcard-front,
 .flashcard-back {
   position: absolute;
+  inset: 0;
   width: 100%;
   height: 100%;
   -webkit-backface-visibility: hidden;
   backface-visibility: hidden;
 
-  border-radius: var(--border-radius);
-  border: 2px solid var(--color-border);
-  padding: 20px;
+  border-radius: var(--border-radius, 14px);
+  border: 2px solid var(--color-border, #e2e8f0);
+  padding: 16px 18px;
   box-sizing: border-box;
+  
   display: flex;
   flex-direction: column;
   justify-content: space-between;
 
-  box-shadow: var(--shadow-cute);
+  box-shadow: var(--shadow-cute, 0 4px 6px -1px rgba(0, 0, 0, 0.07));
   transition:
-    border-color 0.3s ease,
-    box-shadow 0.3s ease,
-    transform 0.2s ease;
+    border-color 0.25s ease,
+    box-shadow 0.25s ease,
+    transform 0.25s ease;
 }
 
+/* --- Face Frontal --- */
 .flashcard-front {
-  background-color: var(--color-surface);
-  color: var(--color-text);
+  background-color: var(--color-surface, #ffffff);
+  color: var(--color-text, #1e293b);
 }
 
 .flashcard-container:not(.flipped):hover .flashcard-front {
-  border-color: var(--color-primary);
-  box-shadow: 3px 3px 0px var(--color-border);
-  transform: translate(3px, 3px);
+  border-color: var(--color-primary, #6366f1);
+  box-shadow: 3px 3px 0px var(--color-border, #cbd5e1);
+  transform: translate(-2px, -2px);
 }
 
-.card-term {
-  font-family: var(--font-heading);
-  color: var(--color-heading);
-  font-size: 26px;
-  margin: 0;
-  letter-spacing: 0.5px;
-}
-
+/* --- Face Traseira --- */
 .flashcard-back {
-  background-color: var(--color-background);
-  color: var(--color-text);
+  background-color: var(--color-background, #f8fafc);
+  color: var(--color-text, #1e293b);
   transform: rotateY(180deg);
 }
 
 .flashcard-container.flipped:hover .flashcard-back {
-  border-color: var(--color-secondary);
-  box-shadow: 3px 3px 0px var(--color-border);
-  transform: rotateY(180deg) translate(-3px, 3px);
+  border-color: var(--color-secondary, #ec4899);
+  box-shadow: -3px 3px 0px var(--color-border, #cbd5e1);
+  transform: rotateY(180deg) translate(2px, -2px);
 }
 
-.card-meaning {
-  font-family: var(--font-body);
-  font-weight: 500;
-  font-size: 15px;
-  line-height: 1.6;
-  color: var(--color-text);
-  margin: 0;
-  text-align: center;
-  padding: 0 10px;
-}
-
+/* 3. CABEÇALHO DO CARD (TOP BAR)
+   -------------------------------------------------------------------------- */
 .card-top {
   display: flex;
   justify-content: space-between;
   align-items: center;
   width: 100%;
+  gap: 8px;
 }
 
-.card-center,
-.card-center-back {
-  flex-grow: 1;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  padding: 12px 0;
+.card-badge,
+.card-badge-back {
+  padding: 4px 10px;
+  border-radius: 20px;
+  font-size: 10.5px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.6px;
+  border: 1px solid var(--color-border, #e2e8f0);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  max-width: 160px;
 }
 
 .card-badge {
-  background-color: var(--color-primary-light);
-  color: var(--color-heading);
-  padding: 5px 12px;
-  border-radius: 20px;
-  font-size: 11px;
-  font-weight: 700;
-  text-transform: uppercase;
-  letter-spacing: 0.5px;
-  border: 1px solid var(--color-border);
+  background-color: var(--color-primary-light, #eef2ff);
+  color: var(--color-heading, #312e81);
 }
 
 .card-badge-back {
-  background-color: var(--color-secondary);
-  color: var(--color-heading);
-  padding: 5px 12px;
-  border-radius: 20px;
-  font-size: 11px;
-  font-weight: 700;
-  text-transform: uppercase;
-  border: 1px solid var(--color-border);
+  background-color: var(--color-secondary, #fce7f3);
+  color: var(--color-heading, #831843);
 }
 
+.back-term-title {
+  font-family: var(--font-heading, inherit);
+  font-size: 13px;
+  font-weight: 700;
+  color: var(--color-heading, #0f172a);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  max-width: 130px;
+}
+
+/* 4. BOTÃO DE ESTRELA / FAVORITO
+   -------------------------------------------------------------------------- */
 .star-btn {
   background: none;
   border: none;
-  color: var(--color-primary-light);
-  font-size: 20px;
+  color: var(--color-border, #cbd5e1);
+  font-size: 19px;
   cursor: pointer;
   padding: 4px;
-  display: flex;
+  display: inline-flex;
   align-items: center;
   justify-content: center;
+  line-height: 1;
   transition:
     transform 0.2s cubic-bezier(0.175, 0.885, 0.32, 1.275),
     color 0.2s ease;
@@ -143,20 +146,141 @@
 
 .star-btn:hover {
   transform: scale(1.25);
-  color: var(--color-accent);
+  color: #f59e0b;
 }
 
 .star-active {
-  color: var(--color-accent) !important;
-  filter: drop-shadow(0 0 4px var(--color-accent));
+  color: #f59e0b !important;
+  filter: drop-shadow(0 0 4px rgba(245, 158, 11, 0.45));
 }
 
-.card-tip {
-  font-family: var(--font-body);
-  font-weight: 600;
-  font-size: 10px;
-  color: var(--color-primary);
-  text-transform: uppercase;
-  letter-spacing: 1px;
+/* 5. ÁREA CENTRAL - FRENTE
+   -------------------------------------------------------------------------- */
+.card-center {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 12px 6px;
   text-align: center;
+}
+
+.card-term {
+  font-family: var(--font-heading, inherit);
+  color: var(--color-heading, #0f172a);
+  font-size: 23px;
+  font-weight: 700;
+  margin: 0;
+  line-height: 1.35;
+  letter-spacing: -0.3px;
+  word-break: break-word;
+}
+
+/* 6. ÁREA CENTRAL - VERSO (CONTEÚDO ROLÁVEL)
+   -------------------------------------------------------------------------- */
+.card-content-scroll {
+  flex: 1;
+  overflow-y: auto;
+  margin: 8px 0;
+  padding-right: 6px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  text-align: left;
+}
+
+/* Scrollbar Minimalista */
+.card-content-scroll::-webkit-scrollbar {
+  width: 4px;
+}
+
+.card-content-scroll::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+.card-content-scroll::-webkit-scrollbar-thumb {
+  background-color: var(--color-border, #cbd5e1);
+  border-radius: 10px;
+}
+
+.card-content-scroll::-webkit-scrollbar-thumb:hover {
+  background-color: var(--color-primary, #6366f1);
+}
+
+/* 7. BLOCOS DE INFORMAÇÃO (SIGNIFICADO, ANALOGIA, EXEMPLO)
+   -------------------------------------------------------------------------- */
+.info-section {
+  display: flex;
+  flex-direction: column;
+  gap: 3px;
+}
+
+.section-tag {
+  font-size: 9.5px;
+  font-weight: 800;
+  text-transform: uppercase;
+  color: var(--color-primary, #6366f1);
+  letter-spacing: 0.6px;
+}
+
+.tag-analogy {
+  color: #b45309;
+}
+
+.tag-example {
+  color: #1d4ed8;
+}
+
+.card-meaning {
+  font-family: var(--font-body, inherit);
+  font-size: 12.5px;
+  font-weight: 500;
+  line-height: 1.45;
+  color: var(--color-text, #334155);
+  margin: 0;
+}
+
+.analogy-box {
+  background-color: var(--color-surface, #ffffff);
+  padding: 6px 10px;
+  border-radius: 8px;
+  border: 1px solid rgba(245, 158, 11, 0.2);
+  border-left: 3px solid #f59e0b;
+}
+
+.card-analogy {
+  font-family: var(--font-body, inherit);
+  font-style: italic;
+  font-size: 12px;
+  line-height: 1.4;
+  color: var(--color-text, #334155);
+  margin: 0;
+}
+
+.example-box {
+  background-color: var(--color-surface, #ffffff);
+  padding: 6px 10px;
+  border-radius: 8px;
+  border: 1px dashed var(--color-border, #cbd5e1);
+}
+
+.card-example {
+  font-family: var(--font-mono, monospace);
+  font-size: 11.5px;
+  line-height: 1.4;
+  color: var(--color-text, #334155);
+  margin: 0;
+}
+
+/* 8. RODAPÉ DO CARD (DICA DE CLIQUE)
+   -------------------------------------------------------------------------- */
+.card-tip {
+  font-family: var(--font-body, inherit);
+  font-weight: 700;
+  font-size: 9.5px;
+  color: var(--color-primary, #6366f1);
+  text-transform: uppercase;
+  letter-spacing: 0.8px;
+  text-align: center;
+  opacity: 0.85;
 }

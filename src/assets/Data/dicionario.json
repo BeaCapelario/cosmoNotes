@@ -1,23 +1,182 @@
 [
   {
     "id": "1",
-    "termo": "Hypervisor",
-    "categoria": "Virtualização",
-    "significado": "Software que cria e roda máquinas virtuais (VMs), dividindo os recursos físicos de um servidor.",
+    "termo": "Hipervisor Tipo 1 (Bare-Metal)",
+    "categoria": "Hardware X86 e Virtualização",
+    "significado": "Camada de software instalada diretamente no hardware físico do servidor, sem a necessidade de um sistema operacional hospedeiro subjacente, para gerenciar máquinas virtuais com alta performance e baixa latência.",
+    "exemplo": "Instalar VMware ESXi ou Proxmox VE diretamente em um servidor blade Dell PowerEdge para provisionar múltiplos ambientes virtuais.",
+    "analogia": "Um síndico profissional contratado que administra um prédio recém-construído diretamente, sem intermediários entre ele e a estrutura física.",
     "estrela": true
   },
   {
     "id": "2",
-    "termo": "RAID 10",
-    "categoria": "Hardware",
-    "significado": "Combinação de espelhamento (RAID 1) e divisão de dados (RAID 0), oferecendo alto desempenho e redundância máxima.",
+    "termo": "Arquitetura x86-64",
+    "categoria": "Hardware X86 e Virtualização",
+    "significado": "Extensão de 64 bits do conjunto de instruções x86 da Intel/AMD, que permite o endereçamento direto de mais de 4 GB de memória RAM física e suporte a registradores mais amplos para processamento de alto desempenho.",
+    "exemplo": "Servidores modernos utilizando processadores Intel Xeon ou AMD EPYC rodando sistemas operacionais de 64 bits com centenas de gigabytes de RAM.",
+    "analogia": "Uma rodovia que foi duplicada e passou de 32 para 64 faixas de tráfego, permitindo o trânsito simultâneo de um volume massivo de veículos.",
     "estrela": false
   },
   {
     "id": "3",
-    "termo": "Bash Script",
-    "categoria": "Automação",
-    "significado": "Arquivo de texto contendo uma série de comandos que são executados pelo shell do Linux para automatizar tarefas.",
+    "termo": "Máquina Virtual (VM)",
+    "categoria": "Hardware X86 e Virtualização",
+    "significado": "Emulação baseada em software de um computador físico completo, com sua própria CPU virtual, memória, interfaces de rede e armazenamento, isolada de outras VMs no mesmo host.",
+    "exemplo": "Criar uma VM com Ubuntu Server e 8 vCPUs dentro de um cluster VMware para hospedar uma aplicação web interna.",
+    "analogia": "Um apartamento independente dentro de um condomínio residencial: tem seus próprios cômodos e portas fechadas, mas compartilha os alicerces e a tubulação do edifício.",
     "estrela": true
+  },
+  {
+    "id": "4",
+    "termo": "NUMA (Non-Uniform Memory Access)",
+    "categoria": "Hardware X86 e Virtualização",
+    "significado": "Arquitetura de memória para servidores multiprocessados (multisocket), onde o tempo de acesso à memória varia dependendo se a RAM está conectada ao socket do processador local ou a outro socket remoto.",
+    "exemplo": "Configurar o alinhamento de vNUMA em uma VM com alta carga de banco de dados para evitar latência de barramento entre processadores físicos.",
+    "analogia": "Buscar um livro na gaveta da sua própria mesa de trabalho (rápido) versus ter que levantar e ir até a mesa do colega ao lado (mais lento).",
+    "estrela": false
+  },
+  {
+    "id": "5",
+    "termo": "Linux Kernel",
+    "categoria": "Sistemas Operacionais e Gerenciamento",
+    "significado": "Núcleo central monolítico e modular do sistema operacional Linux que gerencia o acesso ao hardware, escalonamento de processos na CPU, paginação de memória e chamadas de sistema (syscalls).",
+    "exemplo": "O kernel do Red Hat Enterprise Linux (RHEL) gerenciando drivers de rede e alocação de memória para processos de banco de dados.",
+    "analogia": "O maestro de uma orquestra que coordena silenciosamente o momento exato em que cada músico toca seu instrumento para manter a harmonia.",
+    "estrela": true
+  },
+  {
+    "id": "6",
+    "termo": "Systemd",
+    "categoria": "Sistemas Operacionais e Gerenciamento",
+    "significado": "Conjunto de utilitários e sistema de inicialização (init) padrão na maioria das distribuições Linux modernas, responsável por inicializar o espaço de usuário e gerenciar serviços, daemons e dependências do sistema.",
+    "exemplo": "Executar 'systemctl restart nginx.service' e 'systemctl enable docker' para gerenciar serviços essenciais no boot do servidor.",
+    "analogia": "O gerente de operações de uma empresa que chega de manhã, abre os setores na ordem correta e monitora se todas as equipes estão trabalhando.",
+    "estrela": false
+  },
+  {
+    "id": "7",
+    "termo": "SSH (Secure Shell)",
+    "categoria": "Sistemas Operacionais e Gerenciamento",
+    "significado": "Protocolo cliente-servidor e conjunto de utilitários criptográficos que permite acesso remoto a terminais de comando e transferências seguras de arquivos através de canais não autenticados ou inseguros.",
+    "exemplo": "Conectar-se remotamente a um servidor de produção via terminal utilizando 'ssh -i chave_privada.pem sysadmin@10.0.1.50'.",
+    "analogia": "Um túnel secreto blindado com fechadura biométrica que liga seu computador diretamente à sala de comando do servidor.",
+    "estrela": true
+  },
+  {
+    "id": "8",
+    "termo": "Active Directory / LDAP",
+    "categoria": "Sistemas Operacionais e Gerenciamento",
+    "significado": "Serviço de diretório e autenticação centralizada que armazena informações sobre objetos de rede (usuários, grupos, computadores, permissões) e gerencia o acesso a domínios corporativos.",
+    "exemplo": "Um analista faz logon único (SSO) no Windows ou Linux e ganha acesso automático aos servidores de arquivos de acordo com seu grupo de segurança.",
+    "analogia": "O sistema central de crachás de uma multinacional, que define exatamente quais portas, catracas e salas cada funcionário tem autorização para acessar.",
+    "estrela": false
+  },
+  {
+    "id": "9",
+    "termo": "SAN (Storage Area Network)",
+    "categoria": "Armazenamento e Conectividade (NAS e SAN)",
+    "significado": "Rede dedicada e de altíssimo desempenho (usualmente baseada em Fibre Channel ou iSCSI) que conecta servidores a matrizes de armazenamento compartilhado em nível de bloco (Block Storage).",
+    "exemplo": "Conectar três servidores hosts ESXi a um storage array Dell PowerStore através de switches Fibre Channel de 32 Gbps para compartilhar datastores VMFS.",
+    "analogia": "Uma rede subterrânea de túneis expressos de transporte pesado conectando diretamente fábricas a um grande centro de distribuição de matérias-primas.",
+    "estrela": true
+  },
+  {
+    "id": "10",
+    "termo": "NAS (Network Attached Storage)",
+    "categoria": "Armazenamento e Conectividade (NAS e SAN)",
+    "significado": "Dispositivo de armazenamento dedicado e autônomo conectado a uma rede TCP/IP convencional, responsável por fornecer compartilhamento de arquivos (File-Level Storage) via protocolos como NFS e SMB/CIFS.",
+    "exemplo": "Configurar um appliance QNAP ou Synology com pastas compartilhadas SMB para a equipe de desenvolvimento acessar repositórios de arquivos de mídia.",
+    "analogia": "Uma biblioteca central de pastas físicas dentro do escritório: qualquer funcionário com autorização pode ir até a estante e pegar uma pasta compartilhada.",
+    "estrela": false
+  },
+  {
+    "id": "11",
+    "termo": "Protocolo iSCSI",
+    "categoria": "Armazenamento e Conectividade (NAS e SAN)",
+    "significado": "Protocolo de camada de transporte que encapsula comandos SCSI em pacotes IP convencionais, permitindo que servidores acessem volumes de armazenamento em nível de bloco através de redes Ethernet normais.",
+    "exemplo": "Configurar um software initiator iSCSI no Linux para montar uma LUN remota em /dev/sdb como se fosse um disco rígido físico local.",
+    "analogia": "Colocar cartas de instrução técnica dentro de envelopes de correio comum padrão e enviá-las pela rota de entrega regular da cidade.",
+    "estrela": false
+  },
+  {
+    "id": "12",
+    "termo": "LUN (Logical Unit Number)",
+    "categoria": "Armazenamento e Conectividade (NAS e SAN)",
+    "significado": "Identificador numérico atribuído a uma partição ou volume lógico de armazenamento dentro de uma SAN ou storage array, apresentado ao sistema operacional como um disco bruto.",
+    "exemplo": "Mapear a LUN 01 (com 2 TB em RAID 10) do storage central para o servidor de banco de dados formatar em sistema de arquivos XFS.",
+    "analogia": "O número do box privativo alugado dentro de um galpão de guarda-móveis self-storage.",
+    "estrela": false
+  },
+  {
+    "id": "13",
+    "termo": "RAID (Redundant Array of Independent Disks)",
+    "categoria": "Backup e Proteção de Dados",
+    "significado": "Tecnologia de virtualização de armazenamento físico que combina múltiplos discos rígidos ou SSDs em uma única unidade lógica para garantir tolerância a falhas, ganho de performance de I/O ou ambos.",
+    "exemplo": "Implementar RAID 5 com 4 discos SAS em um servidor para tolerar a queima de 1 disco físico sem interrupção do sistema ou perda de dados.",
+    "analogia": "Escrever documentos importantes em duas folhas com papel carbono: se uma molhar ou rasgar, a segunda folha permanece intacta.",
+    "estrela": true
+  },
+  {
+    "id": "14",
+    "termo": "Backup Incremental",
+    "categoria": "Backup e Proteção de Dados",
+    "significado": "Estratégia de cópia de segurança que salva exclusivamente os dados ou blocos modificados desde a execução do último backup de qualquer tipo (completo ou incremental), economizando tempo e espaço.",
+    "exemplo": "Realizar um backup Full no domingo à noite e backups incrementais rápidos a cada 4 horas nos dias úteis através do Veeam Backup.",
+    "analogia": "Anotar em um caderno apenas os acontecimentos inéditos do dia de hoje, em vez de reescrever sua autobiografia completa toda noite.",
+    "estrela": false
+  },
+  {
+    "id": "15",
+    "termo": "RPO e RTO",
+    "categoria": "Backup e Proteção de Dados",
+    "significado": "Métricas fundamentais de continuidade de negócios: RPO (Recovery Point Objective) define a quantidade máxima de dados que se aceita perder no tempo; RTO (Recovery Time Objective) define o tempo limite para restaurar o serviço.",
+    "exemplo": "Uma política de Disaster Recovery definindo RPO de 15 minutos (perda tolerada) e RTO de 1 hora para o sistema de faturamento após desastre.",
+    "analogia": "RPO é o intervalo de tempo entre as fotos que você salva na nuvem; RTO é o tempo que você leva para comprar um celular novo após quebrar o antigo.",
+    "estrela": true
+  },
+  {
+    "id": "16",
+    "termo": "Snapshot",
+    "categoria": "Backup e Proteção de Dados",
+    "significado": "Registro do estado e dos dados de um volume de armazenamento ou máquina virtual em um instante específico no tempo, permitindo reversão rápida (rollback) para o ponto original.",
+    "exemplo": "Tirar um snapshot da VM antes de aplicar uma atualização crítica de segurança no sistema operacional para reverter se houver incompatibilidade.",
+    "analogia": "Tirar uma foto panorâmica do tabuleiro de xadrez no meio da partida: se uma jogada der muito errado, você pode remontar as peças exatamente como estavam na foto.",
+    "estrela": true
+  },
+  {
+    "id": "17",
+    "termo": "IaaS (Infrastructure as a Service)",
+    "categoria": "Computação em Nuvem",
+    "significado": "Modelo de serviço em nuvem onde o provedor disponibiliza recursos fundamentais de computação (servidores virtuais, redes, roteamento e armazenamento) sob demanda, ficando o cliente responsável por SO e aplicações.",
+    "exemplo": "Provisionar instâncias EC2 na AWS ou máquinas virtuais no Azure para instalar sua própria distribuição Linux e stack web.",
+    "analogia": "Alugar um terreno plano com água encanada e poste de energia instalados para você construir a sua casa personalizada como desejar.",
+    "estrela": true
+  },
+  {
+    "id": "18",
+    "termo": "PaaS (Platform as a Service)",
+    "categoria": "Computação em Nuvem",
+    "significado": "Ambiente completo de desenvolvimento e execução gerenciado pelo provedor em nuvem, permitindo que desenvolvedores entreguem código e APIs sem precisar administrar sistemas operacionais, patches de segurança ou infraestrutura.",
+    "exemplo": "Publicar um aplicativo React ou Node.js diretamente no Azure App Service, Vercel ou AWS Elastic Beanstalk apenas enviando o código.",
+    "analogia": "Alugar um apartamento totalmente mobiliado com serviço de limpeza e manutenção inclusos: você só precisa entrar com suas roupas.",
+    "estrela": false
+  },
+  {
+    "id": "19",
+    "termo": "Kubernetes (K8s)",
+    "categoria": "Computação em Nuvem",
+    "significado": "Plataforma de orquestração de containers de código aberto que automatiza a implantação, dimensionamento horizontal, recuperação de falhas (self-healing) e balanceamento de tráfego de clusters em nuvem.",
+    "exemplo": "Cluster Kubernetes com autoscaler escalando automaticamente pods de microsserviços de 5 para 50 réplicas durante uma Black Friday.",
+    "analogia": "A torre de controle e os rebocadores automatizados de um grande porto, coordenando o movimento e a ancoragem de centenas de contêineres sem colisões.",
+    "estrela": true
+  },
+  {
+    "id": "20",
+    "termo": "Load Balancer em Nuvem",
+    "categoria": "Computação em Nuvem",
+    "significado": "Serviço gerenciado de distribuição inteligente de tráfego de rede ou requisições de aplicações HTTP/HTTPS entre múltiplos nós de servidores para garantir alta disponibilidade e evitar gargalos.",
+    "exemplo": "Configurar um AWS Application Load Balancer (ALB) com verificação de integridade (Health Check) para direcionar usuários apenas para instâncias saudáveis.",
+    "analogia": "Um atendente de triagem em um hospital que direciona os pacientes em fila única para o consultório médico que estiver livre no momento.",
+    "estrela": false
   }
 ]

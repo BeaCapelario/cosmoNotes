@@ -20,6 +20,8 @@ function Dicionario() {
             termo={item.termo}
             categoria={item.categoria}
             significado={item.significado}
+            exemplo={item.exemplo}
+            analogia={item.analogia}
             estrela={item.estrela}
           />
         ))}
