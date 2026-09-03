@@ -1,9 +1,380 @@
 [
-    {
-        "id": " ",
-        "termo": " ",
-        "categoria": "",
-        "significado":" ",
-        "estrela": true
-    }
+  {
+    "id": "1",
+    "termo": "Hipervisor Tipo 1 (Bare-Metal)",
+    "categoria": "Hardware X86 e Virtualização",
+    "significado": "Camada de software de virtualização instalada diretamente no hardware físico do servidor, sem sistema operacional hospedeiro subjacente, garantindo baixa latência e alto desempenho.",
+    "exemplo": "Instalar VMware ESXi ou Nutanix AHV diretamente em um servidor HPE ProLiant DL380 para provisionar múltiplas máquinas virtuais.",
+    "analogia": "Um síndico profissional contratado que administra um prédio recém-construído diretamente, sem intermediários entre ele e a estrutura física.",
+    "estrela": true
+  },
+  {
+    "id": "2",
+    "termo": "HPE iLO (Integrated Lights-Out)",
+    "categoria": "Hardware X86 e Virtualização",
+    "significado": "Processador de gerenciamento dedicado (BMC) soldado na placa-mãe de servidores HPE que permite administração remota Out-of-Band (ligar, desligar, KVM e Virtual Media) independente do sistema operacional.",
+    "exemplo": "Acessar a interface web do iLO via porta de rede dedicada para montar uma ISO remota e instalar o VMware ESXi sem estar fisicamente no Data Center.",
+    "analogia": "A chave mestra e o interfone de emergência do zelador de um prédio, que funcionam mesmo que a energia dos apartamentos tenha caído.",
+    "estrela": true
+  },
+  {
+    "id": "3",
+    "termo": "Memória ECC (Error-Correcting Code)",
+    "categoria": "Hardware X86 e Virtualização",
+    "significado": "Tecnologia de memória RAM corporativa que detecta e corrige automaticamente erros de inversão de um único bit (Single-Bit Flips) em tempo de execução e paralisa o sistema com segurança em erros de múltiplos bits.",
+    "exemplo": "Módulos de memória RDIMM DDR5 instalados em servidores de banco de dados para evitar corrupções silenciosas causadas por variações elétricas.",
+    "analogia": "Um revisor automático em uma gráfica que corrige erros de digitação em tempo real antes do livro ser impresso e para as máquinas se houver uma falha grave.",
+    "estrela": false
+  },
+  {
+    "id": "4",
+    "termo": "vCenter Server (VCSA)",
+    "categoria": "Hardware X86 e Virtualização",
+    "significado": "Appliance centralizado de gerenciamento para ambientes VMware vSphere que unifica a administração de múltiplos hosts ESXi em clusters, habilitando recursos como vMotion, DRS e HA.",
+    "exemplo": "Criar um cluster de 4 hosts ESXi no vCenter para balancear dinamicamente a carga de trabalho de VMs entre os servidores físicos.",
+    "analogia": "A torre de controle de um grande aeroporto, que coordena e monitora todos os aviões e pistas a partir de um único painel central.",
+    "estrela": true
+  },
+  {
+    "id": "5",
+    "termo": "vSphere vMotion",
+    "categoria": "Hardware X86 e Virtualização",
+    "significado": "Recurso da VMware que permite migrar uma máquina virtual em execução de um host físico ESXi para outro sem qualquer tempo de inatividade ou interrupção de serviço aos usuários.",
+    "exemplo": "Mover uma VM de produção ativa para outro servidor físico antes de colocar o host original em modo de manutenção para troca de memória RAM.",
+    "analogia": "Trocar a locomotiva de um trem em alta velocidade em movimento contínuo, sem que os passageiros no vagão sintam qualquer solavanco.",
+    "estrela": true
+  },
+  {
+    "id": "6",
+    "termo": "vSphere HA (High Availability)",
+    "categoria": "Hardware X86 e Virtualização",
+    "significado": "Mecanismo de resiliência de cluster que monitora hosts ESXi via Heartbeats e reinicia automaticamente as máquinas virtuais em hosts saudáveis caso ocorra uma falha física de hardware.",
+    "exemplo": "Se a placa-mãe de um servidor físico queimar à noite, o vSphere HA detecta a parada e reinicia todas as 15 VMs afetadas nos outros nós do cluster.",
+    "analogia": "Um motor reserva em um navio que dá partida automática assim que o motor principal para de funcionar inesperadamente.",
+    "estrela": false
+  },
+  {
+    "id": "7",
+    "termo": "vSwitch & VMkernel Port",
+    "categoria": "Hardware X86 e Virtualização",
+    "significado": "Switch virtual de software configurado dentro do ESXi para interconectar VMs à rede física corporativa e fornecer portas VMkernel (vmk) para serviços de infraestrutura (Gestão, vMotion, iSCSI/NFS).",
+    "exemplo": "Configurar uma porta VMkernel com MTU 9000 (Jumbo Frames) dedicada exclusivamente ao tráfego de storage iSCSI no vSwitch0.",
+    "analogia": "Uma central telefônica interna (PABX) que conecta os ramais dos escritórios entre si e às linhas telefônicas da rua.",
+    "estrela": false
+  },
+  {
+    "id": "8",
+    "termo": "Hiperconvergência (HCI)",
+    "categoria": "Hardware X86 e Virtualização",
+    "significado": "Arquitetura que consolida processamento (CPU/RAM), armazenamento definido por software (SDS) e redes em servidores x86 padrão de mercado modulares (Scale-Out), eliminando redes SAN e storages dedicados.",
+    "exemplo": "Substituir uma infraestrutura tradicional 3-Tier por um cluster Nutanix de 3 nós onde os discos locais formam um pool compartilhado único.",
+    "analogia": "Um smartphone que junta telefone, câmera fotográfica e computador em um único aparelho compacto, em vez de carregar três equipamentos separados.",
+    "estrela": true
+  },
+  {
+    "id": "9",
+    "termo": "Nutanix CVM & Localidade de Dados",
+    "categoria": "Hardware X86 e Virtualização",
+    "significado": "Máquina virtual especial (Controller VM) presente em cada nó Nutanix que gerencia o armazenamento local e prioriza a leitura/escrita nos discos NVMe/SSD do próprio nó onde a VM está rodando.",
+    "exemplo": "A CVM garante que uma aplicação com alto IOPS no Nó 1 leia seus dados diretamente dos discos locais daquele nó, sem trafegar pela rede Ethernet.",
+    "analogia": "Trabalhar com os documentos mais usados direto em cima da sua mesa física em vez de ter que buscá-los no arquivo do corredor a todo momento.",
+    "estrela": false
+  },
+  {
+    "id": "10",
+    "termo": "Nutanix AHV & Prism",
+    "categoria": "Hardware X86 e Virtualização",
+    "significado": "O AHV é o hipervisor nativo gratuito e seguro da Nutanix (baseado em KVM); o Prism é o console web unificado que centraliza a gestão de múltiplos clusters e nuvens híbridas.",
+    "exemplo": "Utilizar o Nutanix Prism Central para criar 10 novas VMs no hipervisor AHV e aplicar atualizações de firmware com 1 clique (LCM).",
+    "analogia": "O painel digital moderno de um carro elétrico que controla a aceleração, a bateria e o ar-condicionado em uma única tela de toque.",
+    "estrela": false
+  },
+  {
+    "id": "11",
+    "termo": "Linux Permissions & chmod",
+    "categoria": "Sistemas Operacionais e Gerenciamento",
+    "significado": "Sistema de controle de acesso POSIX baseado em três entidades (User, Group, Others) e três tipos de direito (Read=4, Write=2, Execute=1), modificado com o comando chmod.",
+    "exemplo": "Executar 'chmod 755 deploy.sh' para dar permissão total ao dono e apenas leitura/execução ao grupo e outros usuários.",
+    "analogia": "Um cofre com três fechaduras diferentes: a chave mestra abre tudo, a segunda permite ver os documentos e a terceira só permite colocar folhas novas.",
+    "estrela": true
+  },
+  {
+    "id": "12",
+    "termo": "Gerenciador de Pacotes (APT vs DNF)",
+    "categoria": "Sistemas Operacionais e Gerenciamento",
+    "significado": "Ferramentas de linha de comando para instalar, atualizar e remover softwares resolvendo dependências automaticamente: APT no ecossistema Debian/Ubuntu (.deb) e DNF/YUM no Red Hat Enterprise Linux (.rpm).",
+    "exemplo": "Executar 'sudo apt update && sudo apt install nginx' no Ubuntu ou 'sudo dnf install httpd' no RHEL para configurar um servidor web.",
+    "analogia": "A loja oficial de aplicativos do celular, que baixa o programa desejado junto com todos os complementos necessários para ele funcionar.",
+    "estrela": false
+  },
+  {
+    "id": "13",
+    "termo": "Systemd & systemctl",
+    "categoria": "Sistemas Operacionais e Gerenciamento",
+    "significado": "Sistema de inicialização padrão (PID 1) nas distribuições Linux corporativas, responsável por iniciar daemons, controlar dependências de boot e auditar logs via journalctl.",
+    "exemplo": "Executar 'sudo systemctl enable --now sshd.service' para iniciar o serviço SSH imediatamente e configurá-lo para subir no boot.",
+    "analogia": "O gerente de operações de um galpão que liga as máquinas na sequência exata pela manhã e monitora o funcionamento de cada setor.",
+    "estrela": false
+  },
+  {
+    "id": "14",
+    "termo": "SSH & Autenticação por Chaves",
+    "categoria": "Sistemas Operacionais e Gerenciamento",
+    "significado": "Protocolo de rede seguro (porta TCP 22) para administração remota criptografada de terminais Linux, utilizando pares de chaves assimétricas (pública e privada) para eliminar senhas fracas.",
+    "exemplo": "Gerar um par de chaves com 'ssh-keygen -t ed25519' e copiar a chave pública com 'ssh-copy-id' para acessar o servidor com segurança.",
+    "analogia": "Um cadeado de alta segurança colocado na porta do servidor, onde apenas quem possui a chave física correspondente no bolso consegue entrar.",
+    "estrela": true
+  },
+  {
+    "id": "15",
+    "termo": "Active Directory Domain Services (AD DS)",
+    "categoria": "Sistemas Operacionais e Gerenciamento",
+    "significado": "Serviço de diretório da Microsoft que armazena identidades de rede (usuários, grupos, computadores) em um banco de dados replicado (ntds.dit) para autenticação e governança via Group Policies (GPO).",
+    "exemplo": "Criar uma Organizational Unit (OU) 'Engenharia' no AD DS e vincular uma GPO para mapear pastas de rede e instalar certificados de segurança automaticamente.",
+    "analogia": "A central de crachás e controle de acesso de um prédio corporativo: define quem pode entrar, em qual andar e quais portas cada crachá abre.",
+    "estrela": true
+  },
+  {
+    "id": "16",
+    "termo": "Serviços DNS & DHCP (Windows Server)",
+    "categoria": "Sistemas Operacionais e Gerenciamento",
+    "significado": "Serviços fundamentais de infraestrutura de rede: o DNS traduz nomes FQDN em endereços IP (registros A, CNAME, SRV); o DHCP distribui IPs, máscaras e gateways dinamicamente.",
+    "exemplo": "Configurar um escopo DHCP '192.168.10.0/24' com reserva fixa para impressoras e zonas DNS integradas ao Active Directory.",
+    "analogia": "O DHCP é o atendente do hotel que entrega a chave de um quarto vago; o DNS é a lista telefônica da recepção que indica o número de cada hóspede.",
+    "estrela": false
+  },
+  {
+    "id": "17",
+    "termo": "PowerShell & Cmdlets",
+    "categoria": "Sistemas Operacionais e Gerenciamento",
+    "significado": "Linguagem de script e shell orientada a objetos da Microsoft baseada na estrutura Verbo-Substantivo (ex.: Get-Service, New-ADUser) que trafega objetos estruturados entre pipes.",
+    "exemplo": "Executar 'Get-ADUser -Filter * | Export-Csv -Path C:\\usuarios.csv' para exportar a listagem completa de colaboradores do domínio.",
+    "analogia": "Uma linha de montagem industrial automatizada onde peças inteiras são passadas de braço em braço mecânico, e não apenas folhas com anotações de texto.",
+    "estrela": false
+  },
+  {
+    "id": "18",
+    "termo": "Altiris ITMS (Broadcom)",
+    "categoria": "Sistemas Operacionais e Gerenciamento",
+    "significado": "Suíte de gerenciamento de ciclo de vida corporativo de TI focada em distribuição automatizada de sistemas operacionais via rede (OS Deployment/PXE) e aplicação de patches de segurança.",
+    "exemplo": "Utilizar o Altiris Deployment Solution para ligar 50 servidores novos via PXE, instalar o Windows Server e injetar os drivers de rede corretos com DeployAnywhere.",
+    "analogia": "Uma esteira de produção automatizada de montadora que recebe chassis vazios e entrega carros padronizados, pintados e revisados prontos para uso.",
+    "estrela": false
+  },
+  {
+    "id": "19",
+    "termo": "Patch Management & Janelas de Manutenção",
+    "categoria": "Sistemas Operacionais e Gerenciamento",
+    "significado": "Processo estruturado de auditoria de vulnerabilidades (CVEs), homologação de correções e distribuição controlada de atualizações de SO dentro de horários agendados de menor impacto.",
+    "exemplo": "Criar uma política de atualização no Altiris para aplicar patches críticos do Windows Update exclusivamente nas madrugadas de domingo com reinício automático.",
+    "analogia": "Fazer a revisão e troca de peças do metrô durante a madrugada para não interromper o transporte de passageiros em horário de pico.",
+    "estrela": false
+  },
+  {
+    "id": "20",
+    "termo": "NetApp ONTAP & FlexVols",
+    "categoria": "Armazenamento e Conectividade (NAS e SAN)",
+    "significado": "Sistema operacional de storage da NetApp baseado na arquitetura WAFL, que provisiona volumes elásticos (FlexVols) montados em uma hierarquia de diretórios única (Junction Path).",
+    "exemplo": "Criar um FlexVol de 5 TB com Thin Provisioning e compressão inline para hospedar o repositório de documentos da empresa no storage NetApp AFF.",
+    "analogia": "Um gaveteiro modular inteligente onde o tamanho de cada gaveta se expande ou encolhe sozinho dependendo da quantidade de pastas colocadas dentro.",
+    "estrela": true
+  },
+  {
+    "id": "21",
+    "termo": "SVM (Storage Virtual Machine)",
+    "categoria": "Armazenamento e Conectividade (NAS e SAN)",
+    "significado": "Servidor de arquivos virtual isolado dentro do cluster NetApp ONTAP que possui suas próprias interfaces lógicas de rede (LIFs), domínio de autenticação e políticas de exportação.",
+    "exemplo": "Configurar a 'SVM_Financeiro' com LIF IP 10.0.50.10 conectada ao Active Directory e isolada das demais áreas da organização.",
+    "analogia": "Um cofre privativo alugado dentro de uma agência bancária: fica no mesmo prédio, mas apenas o seu dono tem a chave e o código de acesso.",
+    "estrela": false
+  },
+  {
+    "id": "22",
+    "termo": "Protocolos NAS: NFS vs. CIFS/SMB",
+    "categoria": "Armazenamento e Conectividade (NAS e SAN)",
+    "significado": "Protocolos de compartilhamento de arquivos na rede IP: NFS (Network File System) é o padrão para ambientes Linux e VMware ESXi; CIFS/SMB (Server Message Block) é o padrão para ambientes Windows.",
+    "exemplo": "Montar um datastore NFS no VMware com 'mount 192.168.1.50:/vol_vms' e mapear uma unidade de rede SMB no Windows em '\\\\svm01\\arquivos'.",
+    "analogia": "Dois idiomas falados no mesmo balcão de atendimento: inglês para clientes internacionais (Linux/NFS) e português para clientes locais (Windows/SMB).",
+    "estrela": true
+  },
+  {
+    "id": "23",
+    "termo": "NetApp Snapshot & WAFL",
+    "categoria": "Armazenamento e Conectividade (NAS e SAN)",
+    "significado": "Cópia pontual somente-leitura e instantânea do sistema de arquivos no ONTAP que apenas bloqueia ponteiros de blocos sem duplicar dados físicos, consumindo zero I/O e espaço inicial.",
+    "exemplo": "Criar uma política de snapshots a cada 1 hora para permitir que usuários recuperem arquivos deletados por engano pela pasta '~snapshot' sem chamar o suporte.",
+    "analogia": "Tirar uma foto panorâmica de uma mesa de trabalho: se algo cair no chão depois, você sabe exatamente onde estava para colocar de volta.",
+    "estrela": false
+  },
+  {
+    "id": "24",
+    "termo": "Rede SAN & LUN (Block Storage)",
+    "categoria": "Armazenamento e Conectividade (NAS e SAN)",
+    "significado": "Rede de armazenamento dedicada de alto desempenho que entrega blocos de disco brutos (LUNs) diretamente para servidores formatarem com seus próprios sistemas de arquivos (VMFS, NTFS, XFS).",
+    "exemplo": "Provisionar uma LUN de 10 TB em um storage Dell PowerStore e apresentá-la via Fibre Channel para o cluster VMware criar um novo Datastore.",
+    "analogia": "Um terreno plano de terra entregue pelo loteador: cabe ao comprador cercar, construir o piso e levantar as paredes da sua casa.",
+    "estrela": true
+  },
+  {
+    "id": "25",
+    "termo": "Fibre Channel vs. iSCSI",
+    "categoria": "Armazenamento e Conectividade (NAS e SAN)",
+    "significado": "Protocolos de transporte SAN: Fibre Channel (FC) utiliza fibra óptica dedicada, switches SAN e placas HBA (WWPN); iSCSI encapsula comandos SCSI em redes Ethernet TCP/IP padrão (IQN).",
+    "exemplo": "Utilizar Fibre Channel de 32 Gbps para bancos de dados Oracle críticos de baixíssima latência e iSCSI 10GbE para servidores de arquivos secundários.",
+    "analogia": "Uma linha de trem-bala exclusiva de carga pesada (Fibre Channel) versus caminhões de transporte compartilhando a rodovia asfaltada pública (iSCSI).",
+    "estrela": true
+  },
+  {
+    "id": "26",
+    "termo": "Multipathing (MPIO & ALUA)",
+    "categoria": "Armazenamento e Conectividade (NAS e SAN)",
+    "significado": "Mecanismo de tolerância a falhas e balanceamento que consolida múltiplos caminhos físicos entre servidor e storage em um único disco lógico através do protocolo ALUA.",
+    "exemplo": "Configurar MPIO com política Round Robin no Windows Server conectado por 4 caminhos FC (2 HBAs x 2 Controladoras) para evitar paradas se um cabo romper.",
+    "analogia": "Uma casa com duas portas de entrada e dois portões na rua: se um portão estiver travado, você entra pelo outro sem ficar trancado do lado de fora.",
+    "estrela": false
+  },
+  {
+    "id": "27",
+    "termo": "SAN Switch Brocade & Fabric OS",
+    "categoria": "Armazenamento e Conectividade (NAS e SAN)",
+    "significado": "Switch de fibra óptica dedicado que roda o sistema operacional Fabric OS (FOS), responsável por comutar quadros Fibre Channel com garantia de entrega sem perdas (*lossless*).",
+    "exemplo": "Conectar as HBAs dos servidores e as portas das controladoras de storage em dois switches Brocade G620 configurados em Dual Fabric (Fabric A e B).",
+    "analogia": "Os trilhos e desvios de alta velocidade em um pátio ferroviário expresso que guiam os vagões diretamente ao terminal correto sem colisão.",
+    "estrela": false
+  },
+  {
+    "id": "28",
+    "termo": "WWPN & Zoneamento (Zoning)",
+    "categoria": "Armazenamento e Conectividade (NAS e SAN)",
+    "significado": "Endereçamento hexadecimal de 64 bits de portas FC (WWPN) e mecanismo de segurança nos switches Brocade que isola a comunicação entre Iniciadores (servidores) e Targets (storages).",
+    "exemplo": "Executar 'zonecreate \"Z_SRV01_STORAGE\", \"10:00:00:25:B5:AA:11:01; 50:06:01:60:BE:A0:01:FF\"' e ativar com 'cfgenable' no switch Brocade.",
+    "analogia": "A lista VIP na entrada de uma festa exclusiva: a segurança só deixa entrar na área reservada quem tem o nome expressamente anotado na lista daquela mesa.",
+    "estrela": true
+  },
+  {
+    "id": "29",
+    "termo": "Regra de Backup 3-2-1-1-0",
+    "categoria": "Backup e Proteção de Dados",
+    "significado": "Metodologia de segurança que exige 3 cópias dos dados, em 2 mídias diferentes, 1 cópia fora da empresa (offsite), 1 cópia imutável/offline e 0 erros validados com testes de restauração.",
+    "exemplo": "Manter os dados em produção, backup local em storage rápido, cópia replicada em nuvem AWS S3 imutável e testes semanais automáticos via Veeam SureBackup.",
+    "analogia": "Guardar uma via da certidão de nascimento na gaveta, uma cópia autenticada no cofre do banco e outra digitalizada na nuvem com chave de segurança.",
+    "estrela": true
+  },
+  {
+    "id": "30",
+    "termo": "Veeam Backup & Hardened Repository",
+    "categoria": "Backup e Proteção de Dados",
+    "significado": "Solução líder de proteção de VMs que utiliza repositórios Linux imutáveis (XFS) para blindar arquivos de backup contra exclusão ou criptografia por ransomware durante o período de retenção.",
+    "exemplo": "Configurar um Hardened Repository Linux com imutabilidade de 30 dias para garantir que nenhum ataque cibernético consiga deletar as cópias de segurança.",
+    "analogia": "Uma caixa de correio com trava antirretorno: você consegue colocar a correspondência para dentro, mas ninguém consegue puxar ou queimar o que está lá dentro.",
+    "estrela": true
+  },
+  {
+    "id": "31",
+    "termo": "Instant VM Recovery (vPower NFS)",
+    "categoria": "Backup e Proteção de Dados",
+    "significado": "Tecnologia da Veeam que inicializa uma máquina virtual diretamente de dentro do arquivo compactado de backup no repositório em poucos minutos, migrando os dados em segundo plano.",
+    "exemplo": "Restaurar o servidor ERP crítico em menos de 3 minutos após uma falha de hardware, mantendo a operação da empresa ativa enquanto o storage vMotion transfere os blocos.",
+    "analogia": "Usar o estepe temporário do carro para continuar dirigindo imediatamente até a oficina mecânica sem ter que esperar o guincho.",
+    "estrela": false
+  },
+  {
+    "id": "32",
+    "termo": "IBM Spectrum Protect (TSM)",
+    "categoria": "Backup e Proteção de Dados",
+    "significado": "Solução corporativa de proteção baseada em banco de dados relacional (IBM Db2) que rastreia individualmente cada objeto protegido e automatiza a hierarquia de discos, fitas magnéticas e nuvem.",
+    "exemplo": "Gerenciar o backup de milhares de servidores distribuídos globalmente com o TSM Operations Center e robôs de fitas magnéticas LTO-9.",
+    "analogia": "O arquivo geral de um cartório central que cataloga cada documento em um livro de registros e sabe exatamente em qual estante de aço a pasta física original está guardada.",
+    "estrela": false
+  },
+  {
+    "id": "33",
+    "termo": "Backup Incremental Permanente (Progressive Incremental)",
+    "categoria": "Backup e Proteção de Dados",
+    "significado": "Modelo pioneiro do IBM TSM que executa apenas 1 backup Full inicial no primeiro dia e, a partir de então, transmite exclusivamente arquivos novos ou alterados para sempre.",
+    "exemplo": "Um servidor de arquivos com 10 TB de dados transfere apenas 20 GB de dados alterados por noite, economizando banda de rede e eliminando a janela de Full de fim de semana.",
+    "analogia": "Escrever em um diário apenas o que aconteceu de diferente no dia de hoje, em vez de reescrever sua vida inteira toda noite antes de dormir.",
+    "estrela": true
+  },
+  {
+    "id": "34",
+    "termo": "Management Classes & Retenção TSM",
+    "categoria": "Backup e Proteção de Dados",
+    "significado": "Regras de ciclo de vida do dado no TSM baseadas em 4 parâmetros: VEREXISTS (versões ativas), VERDELETED (versões deletadas), RETEXTRA (dias de retenção intermediária) e RETONLY (dias de retenção final).",
+    "exemplo": "Configurar uma Management Class com VEREXISTS=3, VERDELETED=1, RETEXTRA=30 e RETONLY=365 para cumprir exigências de auditoria e compliance fiscal.",
+    "analogia": "Uma regra de condomínio que determina guardar as atas de reuniões antigas por 5 anos e os comprovantes de pagamento por 10 anos antes de descartar.",
+    "estrela": false
+  },
+  {
+    "id": "35",
+    "termo": "IaaS (Infrastructure as a Service)",
+    "categoria": "Computação em Nuvem",
+    "significado": "Modelo de serviço em nuvem onde o provedor fornece recursos brutos de computação (vCPUs, RAM, storage e redes) sob demanda, cabendo ao cliente gerenciar o SO, patches e aplicações.",
+    "exemplo": "Provisionar máquinas virtuais na AWS (EC2), Azure ou Google Cloud para instalar sistemas corporativos personalizados.",
+    "analogia": "Alugar um terreno plano com água encanada e poste de energia instalados na calçada para você construir a casa personalizada que desejar.",
+    "estrela": true
+  },
+  {
+    "id": "36",
+    "termo": "Modelo de Responsabilidade Compartilhada",
+    "categoria": "Computação em Nuvem",
+    "significado": "Matriz de segurança da computação em nuvem que divide as obrigações: o provedor cuida da segurança DA nuvem (hardware físico, Data Center, hipervisor) e o cliente cuida da segurança NA nuvem (dados, SO, IAM, firewall).",
+    "exemplo": "A AWS garante que o Data Center físico não sofra invasão, mas é responsabilidade do cliente aplicar patches no Linux e configurar senhas seguras.",
+    "analogia": "O síndico cuida da segurança da portaria, das câmeras e dos portões do prédio, mas trancar a porta do seu apartamento com chave é responsabilidade sua.",
+    "estrela": true
+  },
+  {
+    "id": "37",
+    "termo": "Nuvem Pública, Privada e Híbrida",
+    "categoria": "Computação em Nuvem",
+    "significado": "Modelos de implantação de nuvem: Pública (compartilhada e elástica), Privada (dedicada exclusivamente a uma organização) e Híbrida (interconexão segura entre On-Premises e Nuvem Pública).",
+    "exemplo": "Uma empresa mantém seus bancos de dados sigilosos no Data Center local próprio e utiliza instâncias na nuvem pública para absorver picos de tráfego web.",
+    "analogia": "Morar em um apartamento alugado no centro (Pública), ter sua própria casa de campo fechada (Privada) ou usar ambos conforme a necessidade da semana (Híbrida).",
+    "estrela": false
+  },
+  {
+    "id": "38",
+    "termo": "CapEx vs. OpEx na Nuvem",
+    "categoria": "Computação em Nuvem",
+    "significado": "Transição financeira proporcionada pela nuvem: substitui o alto investimento inicial em compra de ativos físicos (Capital Expenditure) por despesas operacionais contínuas pagas sob demanda (Operational Expenditure).",
+    "exemplo": "Em vez de gastar R$ 500.000,00 na compra de novos servidores físicos hoje, a empresa paga faturas mensais de R$ 8.000,00 conforme o uso real da infraestrutura.",
+    "analogia": "Comprar um carro à vista pagando seguro e IPVA adiantados (CapEx) versus usar transporte por aplicativo pagando apenas pelas corridas que realizar (OpEx).",
+    "estrela": false
+  },
+  {
+    "id": "39",
+    "termo": "OpenStack (Nuvem Privada)",
+    "categoria": "Computação em Nuvem",
+    "significado": "Plataforma de software livre e de código aberto que orquestra grandes pools de servidores físicos, armazenamento e redes para transformar Data Centers convencionais em nuvens privadas IaaS escaláveis.",
+    "exemplo": "Uma empresa de telecomunicações utilizando OpenStack para provisionar milhares de instâncias virtuais com APIs padronizadas sem pagar licenças proprietárias.",
+    "analogia": "A prefeitura de uma cidade que organiza o plano diretor, define o zoneamento dos bairros e distribui a água e a eletricidade para todos os prédios.",
+    "estrela": true
+  },
+  {
+    "id": "40",
+    "termo": "OpenStack Keystone",
+    "categoria": "Computação em Nuvem",
+    "significado": "Módulo central de autenticação e identidade do OpenStack que valida credenciais de usuários, gera tokens de sessão criptografados e fornece o catálogo de URLs de todos os serviços da nuvem (Endpoints).",
+    "exemplo": "Ao digitar 'openstack server create', a CLI consulta primeiro o Keystone para validar o token do usuário antes de repassar o comando ao Nova.",
+    "analogia": "A guarita e a recepção principal de um complexo empresarial que confere o documento de cada visitante e entrega um crachá de acesso com foto.",
+    "estrela": true
+  },
+  {
+    "id": "41",
+    "termo": "OpenStack Nova & Flavors",
+    "categoria": "Computação em Nuvem",
+    "significado": "Módulo de computação do OpenStack que orquestra o ciclo de vida das VMs (criar, pausar, migrar) através do nova-scheduler e dimensiona instâncias usando modelos predefinidos de hardware chamados Flavors.",
+    "exemplo": "O nova-scheduler escolhe o servidor físico com mais memória livre para instanciar uma VM com o flavor 'm1.large' (4 vCPUs e 8 GB RAM).",
+    "analogia": "O maître de um restaurante que acomoda novos clientes na mesa vazia mais adequada de acordo com o tamanho da família e o menu escolhido.",
+    "estrela": true
+  },
+  {
+    "id": "42",
+    "termo": "OpenStack Neutron & Floating IPs",
+    "categoria": "Computação em Nuvem",
+    "significado": "Módulo de redes definidas por software (SDN) do OpenStack que cria redes virtuais isoladas (VXLAN/Geneve), roteadores virtuais, Security Groups e endereços IP públicos roteáveis (Floating IPs).",
+    "exemplo": "Associar um Floating IP '200.150.10.5' a uma VM do projeto de desenvolvimento para que a aplicação web fique acessível na internet pública.",
+    "analogia": "A concessionária de telefonia que puxa ramais internos para cada sala do prédio e atribui linhas diretas externas para as salas que precisam receber chamadas de fora.",
+    "estrela": false
+  }
 ]

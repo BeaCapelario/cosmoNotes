@@ -1,13 +1,262 @@
 [
-      {
+  {
     "id": "q1",
-    "categoria": "",
-    "pergunta": "",
+    "categoria": "Hardware X86 e Virtualização",
+    "pergunta": "Qual é a principal característica técnica que diferencia um Hipervisor Tipo 1 (Bare-Metal) de um Hipervisor Tipo 2 (Hosted)?",
     "opcoes": [
-      " "
-      
+      "O Hipervisor Tipo 1 é instalado diretamente sobre o hardware físico sem um sistema operacional hospedeiro intermediário.",
+      "O Hipervisor Tipo 1 requer obrigatoriamente um sistema Windows Server instalado para gerenciar os drivers de rede.",
+      "O Hipervisor Tipo 1 só suporta a emulação de sistemas operacionais legados de 32 bits.",
+      "O Hipervisor Tipo 1 executa como uma aplicação de usuário dentro de um sistema operacional desktop."
     ],
-    "respostaCorreta": " " ,
-    "explicacao": ""
+    "respostaCorreta": "O Hipervisor Tipo 1 é instalado diretamente sobre o hardware físico sem um sistema operacional hospedeiro intermediário.",
+    "explicacao": "Hipervisores Tipo 1 (como VMware ESXi, Proxmox VE e Microsoft Hyper-V) interagem diretamente com o hardware bare-metal, reduzindo a sobrecarga (overhead) e oferecendo maior desempenho e segurança em ambientes corporativos."
+  },
+  {
+    "id": "q2",
+    "categoria": "Hardware X86 e Virtualização",
+    "pergunta": "Em servidores com arquitetura NUMA (Non-Uniform Memory Access) multiprocessados, o que ocorre quando uma CPU precisa acessar dados na memória conectada ao barramento de outro socket?",
+    "opcoes": [
+      "O acesso ocorre instantaneamente através do barramento PCI Express sem qualquer alteração na latência.",
+      "Ocorre um acesso à memória remota através do interconnect (ex: UPI ou Infinity Fabric), gerando maior latência.",
+      "O sistema operacional entra em Kernel Panic e encerra imediatamente a máquina virtual solicitante.",
+      "A memória do socket remoto é clonada automaticamente para o disco local antes da leitura."
+    ],
+    "respostaCorreta": "Ocorre um acesso à memória remota através do interconnect (ex: UPI ou Infinity Fabric), gerando maior latência.",
+    "explicacao": "Na arquitetura NUMA, o acesso à memória local conectada ao mesmo socket é muito rápido. Quando é necessário ler a memória física de outro processador (memória remota), o tráfego passa pelos links de interconexão, resultando em latência adicional."
+  },
+  {
+    "id": "q3",
+    "categoria": "Hardware X86 e Virtualização",
+    "pergunta": "Qual foi o principal benefício introduzido pela extensão de arquitetura x86-64 (AMD64 / Intel 64) em servidores em relação ao padrão x86 clássico (IA-32)?",
+    "opcoes": [
+      "Eliminação da necessidade de utilizar ventoinhas e refrigeração líquida em data centers.",
+      "Superação do limite teórico de 4 GB de memória RAM diretamente endereçável.",
+      "Substituição de todas as portas seriais e paralelas por conexões Bluetooth integradas.",
+      "Compatibilidade exclusiva com linguagens de programação interpretadas como Python."
+    ],
+    "respostaCorreta": "Superação do limite teórico de 4 GB de memória RAM diretamente endereçável.",
+    "explicacao": "A arquitetura de 32 bits limitava o endereçamento direto de memória a 2^32 bytes (4 GB). Com o x86-64, o espaço de endereçamento teórico saltou para 16 exabytes, permitindo servidores com centenas de gigabytes ou terabytes de RAM."
+  },
+  {
+    "id": "q4",
+    "categoria": "Hardware X86 e Virtualização",
+    "pergunta": "O que caracteriza o conceito de 'Overcommitment' de recursos (como vCPU e memória) em um ambiente de virtualização?",
+    "opcoes": [
+      "Alocar uma quantidade total de recursos virtuais para as VMs superior à capacidade física instalada no servidor host.",
+      "Desligar servidores físicos automaticamente sempre que a temperatura da sala técnica ultrapassar 30°C.",
+      "Impedir que máquinas virtuais compartilhem a mesma placa de rede física instalada no chassi.",
+      "Garantir que 100% da memória de todas as VMs esteja sempre travada em cache NVMe ultrarrápido."
+    ],
+    "respostaCorreta": "Alocar uma quantidade total de recursos virtuais para as VMs superior à capacidade física instalada no servidor host.",
+    "explicacao": "O overcommitment aproveita o fato de que nem todas as máquinas virtuais consomem 100% de seus recursos ao mesmo tempo, permitindo consolidar mais cargas de trabalho em menos servidores físicos."
+  },
+  {
+    "id": "q5",
+    "categoria": "Sistemas Operacionais e Gerenciamento",
+    "pergunta": "No ecossistema Linux, qual é a principal responsabilidade do Kernel?",
+    "opcoes": [
+      "Renderizar janelas gráficas no navegador e gerenciar a interface com o usuário final.",
+      "Atuar como o núcleo do sistema, gerenciando CPU, memória, dispositivos de hardware e chamadas de sistema.",
+      "Compilar automaticamente todo o código JavaScript escrito pelos desenvolvedores antes da execução.",
+      "Fornecer apenas o layout estético e os ícones visuais da distribuição Linux."
+    ],
+    "respostaCorreta": "Atuar como o núcleo do sistema, gerenciando CPU, memória, dispositivos de hardware e chamadas de sistema.",
+    "explicacao": "O kernel é a ponte de mais baixo nível entre as aplicações e o hardware do computador, sendo responsável por agendamento de processos, controle de memória virtual e comunicação com periféricos."
+  },
+  {
+    "id": "q6",
+    "categoria": "Sistemas Operacionais e Gerenciamento",
+    "pergunta": "Em distribuições Linux gerenciadas pelo 'systemd', qual comando é utilizado para configurar um serviço para inicializar automaticamente no boot do sistema operacional?",
+    "opcoes": [
+      "systemctl enable nome_do_servico",
+      "systemctl start nome_do_servico",
+      "service nome_do_servico create-boot",
+      "init 0 --service=nome_do_servico"
+    ],
+    "respostaCorreta": "systemctl enable nome_do_servico",
+    "explicacao": "O comando 'systemctl enable' cria os links simbólicos necessários nos targets de inicialização para que o serviço seja iniciado no boot. Já o 'systemctl start' apenas inicia o serviço no momento atual."
+  },
+  {
+    "id": "q7",
+    "categoria": "Sistemas Operacionais e Gerenciamento",
+    "pergunta": "Por que a autenticação via par de chaves assimétricas (pública/privada) no SSH é considerada mais segura do que o uso exclusivo de senhas tradicionais?",
+    "opcoes": [
+      "Porque a chave privada é enviada em texto puro pela rede e verificada em servidores de DNS públicos.",
+      "Porque elimina o tráfego de senhas pela rede e é praticamente imune a ataques de força bruta e dicionário.",
+      "Porque as chaves SSH funcionam apenas quando os computadores estão fisicamente conectados pelo mesmo cabo de rede.",
+      "Porque a chave pública é mantida em segredo absoluto no computador cliente e nunca compartilhada."
+    ],
+    "respostaCorreta": "Porque elimina o tráfego de senhas pela rede e é praticamente imune a ataques de força bruta e dicionário.",
+    "explicacao": "No SSH com par de chaves, a chave privada nunca sai do computador de origem. O servidor desafia o cliente com criptografia assimétrica, tornando inviável descobrir a credencial via ataques automatizados de força bruta."
+  },
+  {
+    "id": "q8",
+    "categoria": "Sistemas Operacionais e Gerenciamento",
+    "pergunta": "Qual é a função central do Active Directory (AD DS) e do protocolo LDAP em uma infraestrutura corporativa?",
+    "opcoes": [
+      "Converter automaticamente imagens PNG e JPEG para o formato vetorial SVG nos desktops.",
+      "Servir como repositório centralizado de identidades para autenticação, autorização e aplicação de políticas de segurança.",
+      "Distribuir endereços IP públicos diretamente aos modems dos provedores de internet residenciais.",
+      "Executar a desfragmentação periódica dos discos rígidos de todos os computadores da empresa."
+    ],
+    "respostaCorreta": "Servir como repositório centralizado de identidades para autenticação, autorização e aplicação de políticas de segurança.",
+    "explicacao": "O Active Directory (usando LDAP, Kerberos e DNS) centraliza o gerenciamento de credenciais de usuários, grupos e computadores, permitindo Single Sign-On (SSO) e aplicação de Group Policy Objects (GPOs)."
+  },
+  {
+    "id": "q9",
+    "categoria": "Armazenamento e Conectividade (NAS e SAN)",
+    "pergunta": "Qual é a diferença fundamental no modelo de entrega de dados entre um storage NAS e uma rede SAN?",
+    "opcoes": [
+      "NAS entrega armazenamento em nível de arquivo (File-Level), enquanto a SAN entrega em nível de bloco bruto (Block-Level).",
+      "NAS funciona exclusivamente sem fio (Wi-Fi), enquanto a SAN exige cabos de cobre coaxiais antigos.",
+      "NAS não suporta conexões de rede TCP/IP, operando apenas através de barramentos SCSI paralelos.",
+      "SAN só pode ser utilizada para armazenar e-mails de texto simples, enquanto o NAS armazena apenas bancos de dados."
+    ],
+    "respostaCorreta": "NAS entrega armazenamento em nível de arquivo (File-Level), enquanto a SAN entrega em nível de bloco bruto (Block-Level).",
+    "explicacao": "Dispositivos NAS compartilham pastas e arquivos usando protocolos de rede como NFS e SMB/CIFS. Já uma SAN entrega blocos brutos de disco (LUNs) diretamente aos servidores via Fibre Channel ou iSCSI, que formatam seu próprio sistema de arquivos."
+  },
+  {
+    "id": "q10",
+    "categoria": "Armazenamento e Conectividade (NAS e SAN)",
+    "pergunta": "Como o protocolo iSCSI permite a criação de redes de armazenamento sem a necessidade de switches dedicados de Fibre Channel?",
+    "opcoes": [
+      "Substituindo os dados binários por pulsos de rádio FM de curto alcance entre os gabinetes.",
+      "Encapsulando comandos SCSI dentro de pacotes padrão TCP/IP sobre redes Ethernet convencionais.",
+      "Transmitindo arquivos diretamente através de conexões HDMI de alta velocidade nos servidores.",
+      "Utilizando a tecnologia de telefonia analógica tradicional para sincronizar blocos de dados."
+    ],
+    "respostaCorreta": "Encapsulando comandos SCSI dentro de pacotes padrão TCP/IP sobre redes Ethernet convencionais.",
+    "explicacao": "O iSCSI encapsula os blocos de comando SCSI em frames Ethernet/IP, permitindo que a infraestrutura de rede corporativa convencional (switches e cabos Cat6/ópticos) seja utilizada para tráfego de storage de bloco."
+  },
+  {
+    "id": "q11",
+    "categoria": "Armazenamento e Conectividade (NAS e SAN)",
+    "pergunta": "O que é uma LUN (Logical Unit Number) no contexto de matrizes de armazenamento (Storage Arrays)?",
+    "opcoes": [
+      "Um identificador que representa uma porção lógica de armazenamento em nível de bloco apresentada aos hosts.",
+      "Uma placa de expansão física conectada diretamente ao slot PCIe do processador central.",
+      "Um cabo de fibra óptica especial que só transmite dados durante o período noturno.",
+      "O endereço de e-mail corporativo utilizado pelo administrador do sistema de armazenamento."
+    ],
+    "respostaCorreta": "Um identificador que representa uma porção lógica de armazenamento em nível de bloco apresentada aos hosts.",
+    "explicacao": "Uma LUN é a unidade lógica de armazenamento criada a partir de um pool de discos em um storage array e mapeada para um ou mais servidores, sendo reconhecida pelo SO cliente como um disco rígido novo e não formatado."
+  },
+  {
+    "id": "q12",
+    "categoria": "Armazenamento e Conectividade (NAS e SAN)",
+    "pergunta": "Quais são os dois protocolos padrão mais utilizados para compartilhamento de pastas em rede através de um dispositivo NAS?",
+    "opcoes": [
+      "NFS (Network File System) e SMB/CIFS (Server Message Block).",
+      "HTTP (Hypertext Transfer Protocol) e POP3 (Post Office Protocol).",
+      "SMTP (Simple Mail Transfer Protocol) e Telnet.",
+      "BGP (Border Gateway Protocol) e OSPF (Open Shortest Path First)."
+    ],
+    "respostaCorreta": "NFS (Network File System) e SMB/CIFS (Server Message Block).",
+    "explicacao": "NFS é o protocolo padrão tradicionalmente adotado em ambientes Linux/Unix, enquanto o SMB/CIFS é o padrão nativo para sistemas Windows e ambientes híbridos corporativos."
+  },
+  {
+    "id": "q13",
+    "categoria": "Backup e Proteção de Dados",
+    "pergunta": "Em um arranjo de discos configurado em RAID 5 com 4 unidades físicas de 1 TB cada, qual é a capacidade útil e a tolerância a falhas do conjunto?",
+    "opcoes": [
+      "4 TB de capacidade útil e tolerância à queima de até 2 discos simultâneos.",
+      "3 TB de capacidade útil e tolerância à queima de 1 disco físico sem perda de dados.",
+      "1 TB de capacidade útil e tolerância à queima de 3 discos físicos.",
+      "2 TB de capacidade útil e nenhuma tolerância a falhas físicas."
+    ],
+    "respostaCorreta": "3 TB de capacidade útil e tolerância à queima de 1 disco físico sem perda de dados.",
+    "explicacao": "O RAID 5 utiliza paridade distribuída entre todos os discos do array. A fórmula de capacidade útil é (N - 1) * tamanho do menor disco. Portanto, (4 - 1) * 1 TB = 3 TB utilizáveis, tolerando a falha de 1 disco."
+  },
+  {
+    "id": "q14",
+    "categoria": "Backup e Proteção de Dados",
+    "pergunta": "Qual é a principal diferença operacional entre um Backup Incremental e um Backup Diferencial?",
+    "opcoes": [
+      "O Incremental copia dados alterados desde o último backup de qualquer tipo; o Diferencial copia o que mudou desde o último Full.",
+      "O Incremental apaga todos os dados anteriores do disco rígido para economizar espaço de gravação.",
+      "O Diferencial grava os arquivos exclusivamente em fitas magnéticas offline LTO-8.",
+      "O Incremental só funciona em máquinas virtuais Windows, enquanto o Diferencial é exclusivo do Linux."
+    ],
+    "respostaCorreta": "O Incremental copia dados alterados desde o último backup de qualquer tipo; o Diferencial copia o que mudou desde o último Full.",
+    "explicacao": "Backups incrementais são menores e mais rápidos na execução porque copiam apenas as modificações desde o backup mais recente (seja Full ou Incremental). O diferencial cresce progressivamente a cada dia até o próximo Full."
+  },
+  {
+    "id": "q15",
+    "categoria": "Backup e Proteção de Dados",
+    "pergunta": "Se uma empresa define em seu plano de Disaster Recovery um RPO (Recovery Point Objective) de 1 hora e um RTO (Recovery Time Objective) de 4 horas, o que isso significa?",
+    "opcoes": [
+      "Aceita-se perder no máximo 1 hora de dados transacionados, e os sistemas devem estar operacionais em até 4 horas.",
+      "O backup levará 1 hora para ser executado e durará 4 anos guardado em cofre blindado.",
+      "Os servidores devem ser reiniciados a cada 1 hora e o expediente dos analistas dura 4 horas diárias.",
+      "A perda de dados tolerada é de 4 horas e o tempo para restaurar o ambiente não pode passar de 1 hora."
+    ],
+    "respostaCorreta": "Aceita-se perder no máximo 1 hora de dados transacionados, e os sistemas devem estar operacionais em até 4 horas.",
+    "explicacao": "RPO mede o volume/janela de dados perdidos no tempo no momento de um desastre. RTO mede o tempo decorrido entre a parada do serviço e o retorno total à operação."
+  },
+  {
+    "id": "q16",
+    "categoria": "Backup e Proteção de Dados",
+    "pergunta": "Por que a criação de um Snapshot de uma máquina virtual NÃO substitui uma rotina regular de Backup corporativo?",
+    "opcoes": [
+      "Porque o snapshot depende dos discos base da VM e não protege contra corrupção grave ou falha física do storage subjacente.",
+      "Porque os snapshots só podem ser criados em servidores desligados e fora do horário de expediente.",
+      "Porque um snapshot criptografa os arquivos do sistema impedindo que o hipervisor leia as tabelas de partição.",
+      "Porque o snapshot remove automaticamente as placas de rede virtuais conectadas ao switch distribuído."
+    ],
+    "respostaCorreta": "Porque o snapshot depende dos discos base da VM e não protege contra corrupção grave ou falha física do storage subjacente.",
+    "explicacao": "Snapshots funcionam registrando discos delta a partir do disco base original no mesmo storage. Se o storage físico falhar, tanto a VM quanto seus snapshots serão perdidos. Um backup real é uma cópia independente em outro destino."
+  },
+  {
+    "id": "q17",
+    "categoria": "Computação em Nuvem",
+    "pergunta": "No modelo de responsabilidade compartilhada de Nuvem Pública, o que está sob a responsabilidade do CLIENTE em um serviço de IaaS (Infrastructure as a Service)?",
+    "opcoes": [
+      "Manutenção física dos racks, refrigeração do data center e cabeamento óptico dos geradores.",
+      "Sistema operacional, atualizações de segurança (patches), configurações de firewall e aplicações instaladas.",
+      "Substituição de fontes de alimentação queimadas e placas-mãe nos servidores blade da nuvem.",
+      "Criação dos microchips de silício e fabricação dos transistores nos processadores do provedor."
+    ],
+    "respostaCorreta": "Sistema operacional, atualizações de segurança (patches), configurações de firewall e aplicações instaladas.",
+    "explicacao": "No modelo IaaS, o provedor de nuvem (AWS, Azure, GCP) é responsável pela segurança 'da' nuvem (hardware, data centers, hipervisor). O cliente é responsável pela segurança 'na' nuvem (SO da VM, dados, firewall e código)."
+  },
+  {
+    "id": "q18",
+    "categoria": "Computação em Nuvem",
+    "pergunta": "Qual é a principal vantagem de adotar uma plataforma PaaS (Platform as a Service) para times de desenvolvimento de software?",
+    "opcoes": [
+      "Permite focar na escrita do código da aplicação sem a necessidade de provisionar, gerenciar e atualizar servidores ou SO.",
+      "Garante acesso físico livre às salas de data center da Microsoft e da Amazon para os programadores.",
+      "Elimina completamente qualquer custo financeiro associado ao consumo de tráfego de rede e bancos de dados.",
+      "Obriga todas as requisições HTTP a passarem por conexões discadas de 56 kbps para economia de energia."
+    ],
+    "respostaCorreta": "Permite focar na escrita do código da aplicação sem a necessidade de provisionar, gerenciar e atualizar servidores ou SO.",
+    "explicacao": "Serviços PaaS (como Azure App Service, Heroku e Google App Engine) abstraem a camada de infraestrutura, cuidando do runtime, balanceamento, escalabilidade e patches operacionais de forma automática."
+  },
+  {
+    "id": "q19",
+    "categoria": "Computação em Nuvem",
+    "pergunta": "Em um cluster de Kubernetes (K8s), o que é um 'Pod'?",
+    "opcoes": [
+      "A menor unidade de execução e implantação do Kubernetes, que encapsula um ou mais containers compartilhando rede e armazenamento.",
+      "O nome da sala física refrigerada onde ficam instalados os servidores do provedor de nuvem.",
+      "Um tipo de cabo de rede de alta densidade utilizado para interconectar datacenters em cidades vizinhas.",
+      "Um algoritmo criptográfico utilizado exclusivamente para validar certificados SSL expirados."
+    ],
+    "respostaCorreta": "A menor unidade de execução e implantação do Kubernetes, que encapsula um ou mais containers compartilhando rede e armazenamento.",
+    "explicacao": "No Kubernetes, os containers não são executados diretamente; eles são empacotados dentro de Pods, que compartilham o mesmo namespace de rede (mesmo endereço IP) e volumes de armazenamento montados."
+  },
+  {
+    "id": "q20",
+    "categoria": "Computação em Nuvem",
+    "pergunta": "Qual é a função do mecanismo de 'Health Check' em um Balanceador de Carga (Load Balancer) em nuvem?",
+    "opcoes": [
+      "Verificar periodicamente o status e a integridade das instâncias backend, redirecionando o tráfego apenas para nós saudáveis.",
+      "Calcular o consumo elétrico dos servidores e desligá-los automaticamente a cada 15 minutos.",
+      "Enviar notificações de áudio automáticas para os celulares de todos os usuários conectados ao site.",
+      "Limpar a memória cache de todos os navegadores dos visitantes da página web a cada requisição."
+    ],
+    "respostaCorreta": "Verificar periodicamente o status e a integridade das instâncias backend, redirecionando o tráfego apenas para nós saudáveis.",
+    "explicacao": "O Health Check envia requisições periódicas (ex: ping HTTP na rota /healthz) para testar se cada servidor de backend está respondendo. Se um servidor falhar, o Load Balancer para de encaminhar novas requisições para ele até que se recupere."
   }
 ]

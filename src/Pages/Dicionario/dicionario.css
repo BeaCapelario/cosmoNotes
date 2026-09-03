@@ -1,0 +1,139 @@
+
+
+.dicionario-main {
+  flex: 1;
+  width: 100%;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 40px 24px;
+  display: flex;
+  flex-direction: column;
+  gap: 40px;
+  box-sizing: border-box;
+}
+
+.dicionario-header {
+  text-align: center;
+}
+
+.dicionario-title {
+  font-family: var(--font-heading);
+  color: var(--color-heading);
+  font-size: 42px;
+  margin: 0 0 10px 0;
+  /* Mantido a cor de borda para o shadow, mas deixei um pouco mais espesso e fofo */
+  text-shadow: 3px 3px 0px var(--color-border);
+  letter-spacing: 1px;
+}
+
+.dicionario-subtitle {
+  font-family: var(--font-body);
+  color: var(--color-text);
+  font-size: 16px;
+  margin: 0;
+  font-weight: 600; /* Levemente mais encorpado para melhor leitura */
+}
+
+.flashcards-grid {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 24px;
+  width: 100%;
+}
+
+/* --- Contador de Cards --- */
+.dicionario-counter {
+  display: inline-block;
+  margin-top: 0.85rem;
+  font-size: 0.95rem;
+  font-weight: 700; /* Mais destaque */
+  color: var(--color-heading);
+  background-color: var(--color-surface);
+  /* Adicionado o brilho estelar bem suave de fundo! */
+  background-image: var(--gradient-stardust);
+  padding: 0.4rem 1rem;
+  border-radius: 9999px; /* Formato de pílula arredondada */
+  border: 2px solid var(--color-border); /* Ajustado para 2px padrão */
+  box-shadow: 2px 2px 0px var(--color-border); /* Sombra estática menor para não competir com botões */
+}
+
+/* ==========================================================================
+   PAGINATION STYLES
+   ========================================================================== */
+.pagination-container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.75rem;
+  margin: 3.5rem 0 2rem;
+  flex-wrap: wrap;
+}
+
+.pagination-numbers {
+  display: flex;
+  gap: 0.5rem;
+}
+
+/* --- Botões Base (Números, Prev, Next) --- */
+.pagination-btn,
+.pagination-number {
+  background-color: var(--color-surface);
+  border: 2px solid var(--color-border);
+  border-radius: var(--border-radius); /* Usando a variável global para manter consistência */
+  color: var(--color-heading);
+  font-family: var(--font-heading);
+  font-size: 1rem;
+  padding: 0.6rem 1rem;
+  cursor: pointer;
+  box-shadow: var(--shadow-cute);
+  
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  
+  /* Transição elástica mágica */
+  transition: all 0.35s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+/* --- Efeito Hover nos Botões Livres --- */
+.pagination-btn:hover:not(:disabled),
+.pagination-number:hover:not(.active) {
+  transform: translateY(-4px); /* Pulinho para cima ao passar o mouse */
+  border-color: var(--color-tertiary); /* Muda para Lilás! */
+  color: var(--color-tertiary);
+  box-shadow: var(--shadow-glow); /* Emite brilho neon */
+}
+
+/* --- Botão da Página Atual (Ativo) --- */
+.pagination-number.active {
+  background: var(--gradient-magic); /* A página atual brilha com as 3 cores mágicas! */
+  color: #ffffff; /* Branco puro garantido */
+  border-color: transparent; /* Remove borda para deixar o gradiente liso */
+  box-shadow: var(--shadow-glow); /* Fica sempre com o glow ativo para destacar */
+  transform: translateY(-2px); /* Fica levemente destacado/flutuando o tempo todo */
+  cursor: default; /* Mostra que já está selecionado */
+}
+
+/* --- Botões Desabilitados (Ex: "Anterior" na página 1) --- */
+.pagination-btn:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+  box-shadow: none; /* Remove a sombra para parecer "afundado/inativo" */
+  transform: none;
+  background-color: var(--color-background); /* Funde um pouco mais com a tela */
+  border-color: var(--color-border);
+  color: var(--color-text);
+}
+
+/* --- Responsividade da Paginação --- */
+@media (max-width: 600px) {
+  .pagination-container {
+    gap: 0.5rem;
+  }
+  .pagination-btn,
+  .pagination-number {
+    padding: 0.5rem 0.75rem;
+    font-size: 0.85rem;
+  }
+}

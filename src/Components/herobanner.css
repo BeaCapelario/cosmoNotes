@@ -1,0 +1,156 @@
+/* Container Base do Banner */
+.hero-banner {
+  width: 100%;
+  padding: 40px 24px;
+  font-family: var(--font-body);
+  border-bottom: 2px solid var(--color-border);
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  position: relative;
+  overflow: hidden; 
+}
+
+.hero-container {
+  max-width: 1100px;
+  margin: 0 auto;
+  position: relative;
+  z-index: 2;
+}
+
+/*Variantes de Temas*/
+
+/* 1. Surface (Padrão: Fundo limpo, texto legível e clean) */
+.hero-variant-surface {
+  background-color: var(--color-surface);
+  color: var(--color-text);
+}
+.hero-variant-surface .hero-title {
+  color: var(--color-heading);
+}
+
+/* 2. Magic Gradient (Destaque principal do site) */
+.hero-variant-magic {
+  background: var(--gradient-magic);
+  color: #FFFFFF; /* Branco para garantir a leitura perfeita por cima do arco-íris */
+}
+.hero-variant-magic .hero-title {
+  color: #FFFFFF;
+  text-shadow: 2px 2px 0px rgba(0, 0, 0, 0.1); /* Sombra fofa para destacar o título */
+}
+.hero-variant-magic .hero-description {
+  color: rgba(255, 255, 255, 0.95);
+  font-weight: 600;
+}
+.hero-variant-magic .hero-separator,
+.hero-variant-magic .hero-link {
+  color: rgba(255, 255, 255, 0.85);
+}
+.hero-variant-magic .hero-current {
+  color: #FFFFFF;
+  font-weight: 700;
+}
+
+/* 3. Primary (Rosa/Fofo marcante) */
+.hero-variant-primary {
+  background-color: var(--color-primary-light);
+  color: var(--color-heading);
+  /* Adicionando o brilho estelar como textura sutil de fundo! */
+  background-image: var(--gradient-stardust);
+}
+.hero-variant-primary .hero-title {
+  color: var(--color-heading);
+}
+
+/* 4. Dark (Focado em contraste profundo) */
+.hero-variant-dark {
+  background-color: var(--color-heading);
+  color: var(--color-background); 
+}
+.hero-variant-dark .hero-title {
+  color: #ffffff;
+}
+.hero-variant-dark .hero-description {
+  color: var(--color-border);
+}
+.hero-variant-dark .hero-link {
+  color: var(--color-tertiary); 
+}
+
+/* Tipografia e Elementos Internos*/
+
+.hero-title {
+  font-family: var(--font-heading);
+  font-size: 2.25rem;
+  letter-spacing: 0.5px;
+  margin: 0 0 10px 0;
+  line-height: 1.2;
+}
+
+.hero-description {
+  font-size: 1.05rem;
+  line-height: 1.6;
+  max-width: 720px;
+  margin: 0 0 16px 0;
+  font-weight: 500;
+}
+
+/* Breadcrumbs */
+.hero-breadcrumbs {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 0.875rem;
+  font-weight: 600;
+  margin-bottom: 12px;
+}
+
+.hero-link {
+  color: var(--color-primary);
+  text-decoration: none;
+  transition: all 0.2s ease;
+}
+
+.hero-link:hover {
+  text-decoration: underline;
+  color: var(--color-tertiary); 
+}
+
+.hero-separator {
+  color: var(--color-text);
+  opacity: 0.4;
+}
+
+.hero-current {
+  color: var(--color-heading);
+}
+
+/* Botões e Tags  */
+.hero-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+  margin-top: 14px;
+}
+
+/* Badge Categoria  */
+.badge-category {
+  background-color: var(--color-surface);
+  color: var(--color-heading);
+  padding: 6px 14px;
+  border-radius: 20px; 
+  box-shadow: var(--shadow-cute);
+  font-size: 0.8rem;
+  font-weight: 700;
+  display: inline-block;
+  border: 2px solid var(--color-border); 
+  letter-spacing: 0.5px;
+}
+
+/* Responsividade */
+@media (max-width: 640px) {
+  .hero-banner {
+    padding: 28px 16px;
+  }
+  .hero-title {
+    font-size: 1.75rem;
+  }
+}
