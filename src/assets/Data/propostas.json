@@ -1,0 +1,114 @@
+[
+  {
+    "id": "lab-1",
+    "titulo": "Lab 1: Troubleshooting e Acesso Remoto via HPE iLO",
+    "categoria": "Hardware X86 e Virtualização",
+    "nivel": "Intermediário",
+    "cenario": "Um servidor HPE ProLiant DL380 perdeu conectividade de rede do sistema operacional e parou de responder a pings após uma atualização de kernel.",
+    "enunciado": "Utilizando a interface do HPE iLO via porta de gerência dedicada (Out-of-Band), realize o diagnóstico do servidor sem acesso físico ao Data Center.",
+    "tarefas": [
+      "Acessar o console remoto (HTML5 Virtual KVM) para inspecionar a tela de boot/kernel panic.",
+      "Montar uma imagem ISO de recuperação (Live Linux) utilizando a funcionalidade Virtual Media.",
+      "Verificar o log IML (Integrated Management Log) em busca de alertas de memória ECC ou falhas de fonte.",
+      "Executar um Cold Reset (reinicialização forçada) pelo painel de gerenciamento de energia."
+    ]
+  },
+  {
+    "id": "lab-2",
+    "titulo": "Lab 2: Criação de vSwitch e VM no VMware vSphere ESXi",
+    "categoria": "Hardware X86 e Virtualização",
+    "nivel": "Iniciante",
+    "cenario": "A equipe de desenvolvimento solicitou um novo servidor web isolado na VLAN de produção dentro do cluster ESXi.",
+    "enunciado": "Através do VMware Host Client ou vCenter Server, estruture a rede virtual e provisione a nova máquina virtual.",
+    "tarefas": [
+      "Criar um Standard vSwitch (vSwitch1) associando duas placas físicas (vmnic1 e vmnic2) em modo de redundância.",
+      "Configurar um VM Port Group chamado 'VLAN_PROD_100' com a tag 802.1Q (VLAN ID 100).",
+      "Criar uma VM Linux com provisionamento de disco Thin de 50 GB, alocando 2 vCPUs e 4 GB de RAM.",
+      "Conectar a vNIC da máquina virtual recém-criada ao Port Group 'VLAN_PROD_100'."
+    ]
+  },
+  {
+    "id": "lab-3",
+    "titulo": "Lab 3: Hardening e Controle de Serviços no Linux",
+    "categoria": "Sistemas Operacionais e Gerenciamento",
+    "nivel": "Avançado",
+    "cenario": "Um novo servidor Ubuntu/RHEL foi exposto na DMZ e precisa ser blindado antes de receber tráfego de usuários.",
+    "enunciado": "Executando comandos via interface de linha de comando (CLI), aplique permissões, configure o SSH e crie um serviço gerenciado.",
+    "tarefas": [
+      "Gerar um par de chaves SSH (ed25519) local e transferir a chave pública para o servidor.",
+      "Editar o arquivo /etc/ssh/sshd_config para desabilitar o login de root (PermitRootLogin no) e bloquear login por senha.",
+      "Criar um usuário 'deployer', aplicar chmod 700 no seu diretório home e chown apropriado.",
+      "Criar uma unit customizada no systemd (app.service), habilitá-la para iniciar no boot (systemctl enable) e checar os logs com journalctl."
+    ]
+  },
+  {
+    "id": "lab-4",
+    "titulo": "Lab 4: Automação de Usuários e GPO no Active Directory",
+    "categoria": "Sistemas Operacionais e Gerenciamento",
+    "nivel": "Intermediário",
+    "cenario": "A empresa contratou 10 novos estagiários que precisam de contas padronizadas e acesso restrito no domínio Windows corporativo.",
+    "enunciado": "Utilizando o Active Directory Administrative Center e o PowerShell, automatize a criação de contas e aplique políticas de segurança.",
+    "tarefas": [
+      "Criar uma nova Organizational Unit (OU) chamada 'Estagio_TI'.",
+      "Escrever um script PowerShell utilizando o cmdlet New-ADUser para importar e criar as 10 contas de usuário em lote.",
+      "Criar um Security Group Global 'GRP_Estagiarios' e usar Add-ADGroupMember para incluir os usuários criados.",
+      "Criar e vincular uma GPO na OU 'Estagio_TI' para bloquear o acesso ao Painel de Controle e padronizar o papel de parede."
+    ]
+  },
+  {
+    "id": "lab-5",
+    "titulo": "Lab 5: Compartilhamento Multi-Protocolo no NetApp ONTAP",
+    "categoria": "Armazenamento e Conectividade (NAS e SAN)",
+    "nivel": "Avançado",
+    "cenario": "A equipe de Engenharia precisa compartilhar um diretório de projetos pesado simultaneamente entre servidores Linux (via NFS) e estações Windows (via SMB).",
+    "enunciado": "Acessando o NetApp ONTAP System Manager ou a CLI, configure a SVM e provisione o volume híbrido.",
+    "tarefas": [
+      "Verificar as interfaces de rede lógicas (LIFs) dedicadas aos protocolos NFS e CIFS/SMB na Storage Virtual Machine (SVM).",
+      "Criar um FlexVol de 500 GB com Thin Provisioning e habilitar as tecnologias de desduplicação e compressão inline.",
+      "Criar uma Export Policy restringindo a montagem NFS apenas para a sub-rede dos servidores Linux.",
+      "Criar um CIFS Share com permissões NTFS baseadas em grupos do Active Directory para as estações Windows."
+    ]
+  },
+  {
+    "id": "lab-6",
+    "titulo": "Lab 6: Zoneamento Single-Initiator no Switch Brocade",
+    "categoria": "Armazenamento e Conectividade (NAS e SAN)",
+    "nivel": "Avançado",
+    "cenario": "Um novo host ESXi precisa ter sua placa HBA conectada à controladora A do storage SAN com máxima segurança e isolamento.",
+    "enunciado": "Acessando o Brocade Fabric OS (FOS) via SSH, configure o zoneamento Fibre Channel em Single-Initiator Zone.",
+    "tarefas": [
+      "Identificar o WWPN da HBA do servidor e da controladora de storage usando o comando switchshow.",
+      "Criar Aliases (alicreate) amigáveis para facilitar a identificação dos WWPNs envolvidos.",
+      "Criar a zona (zonecreate) agrupando o Alias do servidor e o Alias do storage.",
+      "Adicionar a nova zona à configuração ativa (cfgadd), aplicá-la (cfgenable) e salvar permanentemente (cfgsave)."
+    ]
+  },
+  {
+    "id": "lab-7",
+    "titulo": "Lab 7: Disaster Recovery com Veeam Instant VM Recovery",
+    "categoria": "Backup e Proteção de Dados",
+    "nivel": "Intermediário",
+    "cenario": "O servidor principal de banco de dados sofreu corrupção total do sistema de arquivos e a operação precisa retornar em menos de 5 minutos (RTO crítico).",
+    "enunciado": "No console do Veeam Backup & Replication, recupere a máquina virtual de forma instantânea a partir do repositório.",
+    "tarefas": [
+      "Localizar o job de backup do servidor e selecionar a opção 'Instant Recovery'.",
+      "Selecionar o host ESXi de destino para montagem do datastore temporário via vPower NFS.",
+      "Validar a inicialização da VM (direto do arquivo de backup compactado) e testar o acesso ao banco de dados.",
+      "Com a aplicação já operando, iniciar a migração definitiva para o storage de produção (Storage vMotion) em segundo plano."
+    ]
+  },
+  {
+    "id": "lab-8",
+    "titulo": "Lab 8: Topologia de Rede IaaS com OpenStack Neutron",
+    "categoria": "Computação em Nuvem",
+    "nivel": "Intermediário",
+    "cenario": "Você precisa preparar a infraestrutura base (IaaS) de nuvem privada para receber uma nova aplicação web isolada da internet pública.",
+    "enunciado": "Utilizando o dashboard Horizon do OpenStack ou a linha de comando, crie a topologia de rede virtual (SDN).",
+    "tarefas": [
+      "Criar uma rede de Tenant privada (ex: 192.168.50.0/24) dedicada ao projeto da nova aplicação.",
+      "Criar um Roteador Virtual, adicionando uma interface na rede privada criada e configurando o gateway para a rede Provider externa.",
+      "Configurar um Security Group liberando tráfego de entrada apenas para as portas 80 (HTTP), 443 (HTTPS) e 22 (SSH restrito a um IP seguro).",
+      "Provisionar a instância via Nova associada a essa rede e atachar um Floating IP para garantir acesso externo."
+    ]
+  }
+]

@@ -1,0 +1,604 @@
+/* ==========================================================================
+   QUIZ & LABS COMPONENT STYLES - cosmoNotes ✨
+   ========================================================================== */
+
+/* 1. CONTAINER PRINCIPAL
+   -------------------------------------------------------------------------- */
+.quiz-page-container {
+  width: 100%;
+  max-width: 820px; 
+  margin: 0 auto;
+  padding: 24px 16px;
+  box-sizing: border-box;
+  font-family: var(--font-body);
+  color: var(--color-text);
+}
+
+/* 2. CABEÇALHO, ALTERNADOR DE MODOS & FILTROS
+   -------------------------------------------------------------------------- */
+.quiz-header {
+  text-align: center;
+  margin-bottom: 24px;
+}
+
+.quiz-title {
+  font-family: var(--font-heading);
+  font-size: 32px; /* Um pouquinho maior para impacto */
+  color: var(--color-heading);
+  margin: 0 0 6px 0;
+  text-shadow: 2px 2px 0px var(--color-border); /* Sombreado fofo no título */
+}
+
+.quiz-subtitle {
+  font-size: 15px;
+  color: var(--color-text);
+  margin: 0 0 24px 0;
+  opacity: 0.9;
+  font-weight: 500;
+}
+
+/* Alternador (Quiz vs Labs) */
+.mode-switcher {
+  display: flex;
+  justify-content: center;
+  gap: 16px;
+  margin-bottom: 24px;
+}
+
+.mode-btn {
+  background-color: var(--color-surface);
+  border: 2px solid var(--color-border);
+  color: var(--color-heading);
+  font-family: var(--font-heading);
+  font-size: 15px;
+  padding: 10px 24px; /* Mais gordinho e clicável */
+  border-radius: 20px; /* Formato pílula mágico */
+  cursor: pointer;
+  box-shadow: var(--shadow-cute);
+  transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+.mode-btn:hover {
+  transform: translateY(-3px);
+  border-color: var(--color-primary);
+  color: var(--color-primary);
+  box-shadow: var(--shadow-glow); /* Brilho ao passar o mouse */
+}
+
+.mode-btn.active {
+  background: var(--gradient-magic); /* Botão ativo ganha a cor principal mágica */
+  color: #ffffff;
+  border-color: transparent;
+  box-shadow: var(--shadow-glow);
+  transform: translateY(-2px);
+  cursor: default;
+}
+
+/* Filtros de Categoria */
+.category-filters {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  justify-content: center;
+}
+
+.category-chip {
+  background-color: var(--color-surface);
+  border: 2px solid var(--color-border);
+  color: var(--color-text);
+  padding: 6px 16px;
+  border-radius: 20px;
+  font-size: 12.5px;
+  font-weight: 700;
+  cursor: pointer;
+  box-shadow: 2px 2px 0px var(--color-border);
+  transition: all 0.25s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+.category-chip:hover {
+  border-color: var(--color-tertiary);
+  color: var(--color-tertiary);
+  transform: translateY(-2px);
+  box-shadow: 0 0 10px rgba(179, 136, 235, 0.4); /* Glow lilás suave */
+}
+
+.category-chip.active {
+  background-color: var(--color-tertiary);
+  border-color: var(--color-tertiary);
+  color: #ffffff;
+  box-shadow: 3px 3px 0px var(--color-border);
+}
+
+/* 3. MODO QUIZ: BARRA DE PROGRESSO & CARD DA QUESTÃO
+   -------------------------------------------------------------------------- */
+.quiz-main {
+  animation: fadeIn 0.4s ease;
+}
+
+.progress-section {
+  margin-bottom: 20px;
+}
+
+.progress-info {
+  display: flex;
+  justify-content: space-between;
+  font-size: 12.5px;
+  font-weight: 800;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  color: var(--color-primary); /* Destaque na cor primária */
+  margin-bottom: 8px;
+}
+
+.progress-bar-bg {
+  width: 100%;
+  height: 12px; /* Levemente mais gordinha */
+  background-color: var(--color-surface);
+  border: 2px solid var(--color-border);
+  border-radius: 20px;
+  overflow: hidden;
+  box-shadow: inset 2px 2px 4px rgba(0, 0, 0, 0.05);
+}
+
+.progress-bar-fill {
+  height: 100%;
+  background: var(--gradient-magic); /* A barra enchendo de magia! */
+  border-radius: 20px;
+  transition: width 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+  box-shadow: 0 0 10px rgba(255, 101, 163, 0.5); /* Glow acompanhando o progresso */
+}
+
+.question-card {
+  background-color: var(--color-surface);
+  border: 2px solid var(--color-border);
+  border-radius: var(--border-radius);
+  padding: 28px;
+  box-sizing: border-box;
+  box-shadow: var(--shadow-cute);
+  display: flex;
+  flex-direction: column;
+}
+
+.card-meta {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 20px;
+  gap: 8px;
+}
+
+.question-badge, .score-badge {
+  font-size: 11.5px;
+  font-weight: 800;
+  padding: 4px 12px;
+  border-radius: 20px;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  border: 2px solid var(--color-border);
+}
+
+.question-badge {
+  background-color: var(--color-primary-light);
+  color: var(--color-heading);
+  border-color: var(--color-primary);
+}
+
+.score-badge {
+  color: var(--color-accent);
+  background-color: var(--color-surface);
+  border-color: var(--color-accent);
+  box-shadow: 0 0 8px rgba(255, 209, 102, 0.3); /* Brilho de estrela */
+}
+
+.question-text {
+  font-family: var(--font-heading);
+  font-size: 21px;
+  line-height: 1.45;
+  color: var(--color-heading);
+  margin: 0 0 24px 0;
+}
+
+/* 4. MODO QUIZ: OPÇÕES DE RESPOSTA & FEEDBACK
+   -------------------------------------------------------------------------- */
+.options-grid {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+  margin-bottom: 24px;
+}
+
+.option-btn {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  padding: 14px 18px;
+  border-radius: 14px;
+  border: 2px solid var(--color-border);
+  background-color: var(--color-background);
+  color: var(--color-text);
+  cursor: pointer;
+  text-align: left;
+  font-family: var(--font-body);
+  font-size: 14.5px;
+  font-weight: 600;
+  line-height: 1.45;
+  box-shadow: var(--shadow-cute);
+  transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+.option-btn:not(:disabled):hover {
+  border-color: var(--color-primary);
+  background-color: var(--color-surface);
+  transform: translateY(-3px);
+  box-shadow: var(--shadow-glow);
+}
+
+.option-btn.selected {
+  border-color: var(--color-primary);
+  background-color: var(--color-primary-light);
+  color: var(--color-heading);
+  transform: translateY(-2px);
+  box-shadow: var(--shadow-glow);
+}
+
+.option-letter {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 28px;
+  height: 28px;
+  border-radius: 8px;
+  background-color: var(--color-surface);
+  border: 2px solid var(--color-border);
+  font-weight: 800;
+  font-size: 12px;
+  color: var(--color-heading);
+  flex-shrink: 0;
+  transition: all 0.3s ease;
+}
+
+.option-btn.selected .option-letter {
+  background: var(--gradient-magic);
+  border-color: transparent;
+  color: #ffffff;
+}
+
+/* 🟢 Cores Semânticas (Certos/Errados adaptados para Dark Mode via RGBA) */
+.option-btn.correct {
+  border-color: #00E6CC !important; /* Ciano Mágico para Acertos */
+  background-color: rgba(0, 230, 204, 0.1) !important;
+  color: var(--color-heading) !important;
+  box-shadow: 0 0 15px rgba(0, 230, 204, 0.3) !important;
+}
+.option-btn.correct .option-letter {
+  background-color: #00E6CC;
+  border-color: #00E6CC;
+  color: #140D26; /* Texto escuro para contraste no ciano */
+}
+
+.option-btn.wrong {
+  border-color: #FF4D85 !important; /* Rosa Choque para Erros */
+  background-color: rgba(255, 77, 133, 0.1) !important;
+  color: var(--color-heading) !important;
+  box-shadow: 0 0 15px rgba(255, 77, 133, 0.3) !important;
+}
+.option-btn.wrong .option-letter {
+  background-color: #FF4D85;
+  border-color: #FF4D85;
+  color: #ffffff;
+}
+
+.option-btn.disabled {
+  opacity: 0.6;
+  cursor: default;
+  transform: none !important;
+}
+
+.status-icon {
+  font-size: 20px;
+  flex-shrink: 0;
+  margin-left: auto; /* Joga o ícone para a direita do botão */
+}
+.icon-correct { color: #00E6CC; filter: drop-shadow(0 0 4px #00E6CC); }
+.icon-wrong { color: #FF4D85; filter: drop-shadow(0 0 4px #FF4D85); }
+
+/* --- Caixa de Explicação --- */
+.explanation-box {
+  padding: 16px 20px;
+  border-radius: 12px;
+  margin-bottom: 24px;
+  border: 2px solid transparent;
+  animation: fadeIn 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.exp-correct {
+  background-color: rgba(0, 230, 204, 0.1);
+  border-color: rgba(0, 230, 204, 0.3);
+  border-left: 6px solid #00E6CC;
+}
+
+.exp-wrong {
+  background-color: rgba(255, 77, 133, 0.1);
+  border-color: rgba(255, 77, 133, 0.3);
+  border-left: 6px solid #FF4D85;
+}
+
+.explanation-header {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 14px;
+  font-weight: 800;
+  color: var(--color-heading);
+  margin-bottom: 8px;
+}
+
+.explanation-text {
+  font-family: var(--font-body);
+  font-size: 14px;
+  line-height: 1.55;
+  margin: 0;
+  color: var(--color-text);
+  font-weight: 500;
+}
+
+/* 5. AÇÕES E RESULTADOS
+   -------------------------------------------------------------------------- */
+.card-actions {
+  display: flex;
+  justify-content: flex-end;
+  gap: 12px;
+}
+
+.action-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 12px 24px;
+  border-radius: 16px;
+  font-family: var(--font-heading);
+  font-size: 15px;
+  cursor: pointer;
+  border: none;
+  box-shadow: var(--shadow-cute);
+  transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+.confirm-btn {
+  background: var(--gradient-magic);
+  color: #ffffff;
+}
+.confirm-btn:hover:not(:disabled) {
+  transform: translateY(-3px);
+  box-shadow: var(--shadow-glow);
+}
+
+.next-btn, .restart-btn {
+  background-color: var(--color-heading);
+  color: var(--color-background);
+  border: 2px solid var(--color-heading);
+}
+.next-btn:hover:not(:disabled), .restart-btn:hover:not(:disabled) {
+  background-color: transparent;
+  color: var(--color-heading);
+  transform: translateY(-3px);
+}
+
+.action-btn:disabled {
+  background: var(--color-border);
+  color: var(--color-text);
+  box-shadow: none;
+  cursor: not-allowed;
+  opacity: 0.6;
+}
+
+/* Card de Resultados */
+.results-card {
+  background-color: var(--color-surface);
+  border: 2px solid var(--color-border);
+  border-radius: var(--border-radius);
+  padding: 48px 24px;
+  text-align: center;
+  box-shadow: var(--shadow-cute);
+  animation: fadeIn 0.5s ease;
+  position: relative;
+  overflow: hidden;
+}
+
+.results-card::before {
+  content: "";
+  position: absolute;
+  top: 0; left: 0; right: 0; bottom: 0;
+  background-image: var(--gradient-stardust);
+  opacity: 0.4;
+  pointer-events: none;
+}
+
+.results-icon-wrap {
+  font-size: 64px;
+  color: var(--color-accent);
+  margin-bottom: 16px;
+  filter: drop-shadow(0 0 15px rgba(255, 209, 102, 0.6)); /* Estrela brilhante */
+  position: relative;
+  z-index: 1;
+}
+
+.results-card h2 {
+  font-family: var(--font-heading);
+  font-size: 32px;
+  color: var(--color-heading);
+  margin: 0 0 8px 0;
+  position: relative;
+  z-index: 1;
+}
+
+.score-circle {
+  font-size: 56px;
+  font-weight: 800;
+  background: var(--gradient-magic);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  margin: 16px 0;
+  letter-spacing: -2px;
+  position: relative;
+  z-index: 1;
+}
+
+.score-total {
+  font-size: 24px;
+  font-weight: 700;
+  color: var(--color-text);
+  -webkit-text-fill-color: initial; /* Reseta o hack do gradiente para o texto total */
+}
+
+/* 6. MODO LABS PRÁTICOS
+   -------------------------------------------------------------------------- */
+.labs-main {
+  animation: fadeIn 0.4s ease;
+}
+
+.labs-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+  gap: 24px;
+}
+
+.lab-card {
+  background-color: var(--color-surface);
+  border: 2px solid var(--color-border);
+  border-radius: var(--border-radius);
+  padding: 24px;
+  box-shadow: var(--shadow-cute);
+  display: flex;
+  flex-direction: column;
+  transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+.lab-card:hover {
+  transform: translateY(-5px);
+  border-color: var(--color-secondary);
+  box-shadow: var(--shadow-glow);
+}
+
+.lab-header {
+  display: flex;
+  gap: 8px;
+  margin-bottom: 16px;
+  flex-wrap: wrap;
+}
+
+.lab-badge-level {
+  background-color: var(--color-secondary); /* Usa ciano/teal para Nível */
+  color: #140D26; /* Texto escuro forte para contraste no ciano */
+  font-weight: 800;
+  font-size: 11px;
+  padding: 4px 12px;
+  border-radius: 20px;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  border: 2px solid var(--color-secondary);
+}
+
+.lab-badge-category {
+  background-color: transparent;
+  color: var(--color-tertiary);
+  font-weight: 800;
+  font-size: 11px;
+  padding: 4px 12px;
+  border-radius: 20px;
+  border: 2px solid var(--color-tertiary);
+  text-transform: uppercase;
+}
+
+.lab-title {
+  font-family: var(--font-heading);
+  color: var(--color-heading);
+  font-size: 22px;
+  margin: 0 0 16px 0;
+  display: flex;
+  align-items: flex-start;
+  gap: 10px;
+  line-height: 1.35;
+}
+
+.lab-icon {
+  color: var(--color-tertiary); /* Trocado para lilás mágico */
+  flex-shrink: 0;
+  font-size: 24px;
+}
+
+.lab-scenario {
+  background-color: var(--color-background);
+  padding: 16px;
+  border-radius: 12px;
+  font-size: 14px;
+  color: var(--color-text);
+  font-weight: 500;
+  margin-bottom: 20px;
+  border-left: 4px solid var(--color-accent);
+  line-height: 1.55;
+}
+
+.lab-tasks h4 {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  color: var(--color-heading);
+  margin: 0 0 14px 0;
+  font-size: 15px;
+  font-weight: 800;
+}
+
+.lab-tasks ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.lab-tasks li {
+  font-size: 14px;
+  position: relative;
+  padding-left: 26px;
+  color: var(--color-text);
+  line-height: 1.5;
+  font-weight: 500;
+}
+
+.lab-tasks li::before {
+  content: "✨"; /* Trocamos a mãozinha por um brilho! */
+  position: absolute;
+  left: 0;
+  top: 0;
+  font-size: 13px;
+}
+
+/* Empty State / Sem Conteúdo */
+.empty-state {
+  text-align: center;
+  padding: 56px 24px;
+  color: var(--color-text);
+  font-size: 16px;
+  font-weight: 700;
+  background-color: var(--color-surface);
+  border-radius: var(--border-radius);
+  border: 2px dashed var(--color-tertiary); /* Borda tracejada Lilás */
+  margin-top: 24px;
+  box-shadow: inset 0 0 20px rgba(179, 136, 235, 0.05);
+}
+
+/* 7. ANIMAÇÕES GERAIS
+   -------------------------------------------------------------------------- */
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(10px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+/* Responsividade */
+@media (max-width: 600px) {
+  .mode-switcher { flex-direction: column; gap: 10px; }
+  .labs-grid { grid-template-columns: 1fr; }
+  .quiz-title { font-size: 26px; }
+}

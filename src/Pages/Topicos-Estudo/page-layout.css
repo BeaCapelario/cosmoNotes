@@ -1,0 +1,80 @@
+/* Layout principal para todas as páginas de tópico */
+.topic-page-main {
+  background-color: var(--color-background);
+  width: 100%;
+  flex: 1; 
+  display: flex;
+  flex-direction: column;
+  animation: slideUpFade 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275) forwards;
+}
+
+/* Seção de Tópicos (título e grid) */
+.topics-section {
+  max-width: 1100px;
+  width: 100%;
+  margin: 0 auto;
+  padding: 24px 20px 32px 20px; 
+  display: flex;
+  flex-direction: column;
+  align-items: center; 
+  gap: 20px; 
+}
+
+/* Título "Tópicos para estudo" */
+.topics-section-title {
+  font-family: var(--font-heading);
+  color: var(--color-heading);
+  font-size: 28px;
+  margin: 0;
+  text-align: center;
+  width: 100%;
+  position: relative;
+}
+
+.topics-section-title::after {
+  content: "";
+  display: block;
+  width: 50px;
+  height: 4px;
+  background-color: var(--color-tertiary);
+  margin: 8px auto 0 auto;
+  border-radius: 4px;
+  box-shadow: 0 0 10px rgba(179, 136, 235, 0.5);
+}
+
+/* Grid para os botões de tópicos específicos */
+.topic-grid {
+  display: flex;
+  flex-flow: row wrap; 
+  justify-content: center;
+  align-items: center;
+  gap: 16px; 
+  width: 100%;
+}
+
+/* Badge de categoria no HeroBanner */
+.badge-category {
+  background-color: var(--color-surface);
+  color: var(--color-heading);
+  padding: 6px 16px;
+  border-radius: 20px; 
+  box-shadow: var(--shadow-cute);
+  font-size: 0.85rem;
+  font-weight: 800;
+  display: inline-block;
+  border: 2px solid var(--color-border); 
+  letter-spacing: 0.5px;
+  transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+/* Keyframe de entrada */
+@keyframes slideUpFade {
+  0% {
+    opacity: 0;
+    transform: translateY(15px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}

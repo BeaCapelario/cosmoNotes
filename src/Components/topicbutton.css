@@ -1,0 +1,77 @@
+/* ==========================================================================
+   TOPIC BUTTON COMPONENT STYLES - cosmoNotes ✨
+   ========================================================================== */
+
+.topic-btn {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 16px;
+  text-decoration: none;
+  background-color: var(--color-surface);
+  border: 2px solid var(--color-border);
+  padding: 20px;
+  border-radius: var(--border-radius);
+  box-shadow: var(--shadow-cute);
+  cursor: pointer;
+  box-sizing: border-box;
+  width: 180px; 
+  height: 180px; 
+  
+  /* Transição única e elástica para todas as propriedades */
+  transition: all 0.35s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+.topic-icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--color-primary);
+  background-color: var(--color-primary-light);
+  width: 48px; /* Aumentei um tiquinho (de 44 para 48) para dar mais destaque ao ícone */
+  height: 48px;
+  border-radius: 50%;
+  flex-shrink: 0;
+  
+  transition: all 0.35s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+.topic-title {
+  color: var(--color-heading); 
+  font-family: var(--font-body);
+  font-weight: 700;
+  font-size: 16px; /* Ajustado sutilmente para maior legibilidade */
+  text-align: center;
+  letter-spacing: 0.2px;
+  line-height: 1.3;
+  transition: color 0.3s ease;
+}
+
+/* --- Efeitos Mágicos ao Passar o Mouse --- */
+.topic-btn:hover {
+  background: var(--gradient-magic); 
+  border-color: transparent; /* Removemos a borda para o gradiente brilhar */
+  transform: translateY(-6px); /* Agora o botão flutua/salta para cima! */
+  box-shadow: var(--shadow-glow); /* Emite o poder mágico! */
+}
+
+.topic-btn:hover .topic-title {
+  color: #FFFFFF; /* Texto sempre branco puro em cima do gradiente colorido */
+}
+
+.topic-btn:hover .topic-icon {
+  color: var(--color-primary);
+  background-color: #FFFFFF; /* Fundo do ícone também fixo em branco para contraste */
+  
+  /* O ícone cresce um pouquinho mais e dá uma leve "giradinha" mágica */
+  transform: scale(1.15) rotate(8deg); 
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1); /* Dá um voluminho ao ícone flutuante */
+}
+
+/* --- Efeito ao Clicar (Active) --- */
+.topic-btn:active {
+  transform: translateY(-2px) scale(0.97); /* Um leve "amasso" satisfatório ao clicar */
+  box-shadow: var(--shadow-cute); /* Volta para a sombra sólida ao ser pressionado */
+  transition: transform 0.1s ease, box-shadow 0.1s ease; /* Transição mais rápida pro clique parecer responsivo */
+}
