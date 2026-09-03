@@ -1,6 +1,3 @@
-/* ==========================================================================
-   FLASHCARD COMPONENT STYLES - cosmoNotes
-   ========================================================================== */
 
 /* 1. CONTAINER & 3D WRAPPER
    -------------------------------------------------------------------------- */
@@ -39,8 +36,8 @@
   -webkit-backface-visibility: hidden;
   backface-visibility: hidden;
 
-  border-radius: var(--border-radius, 14px);
-  border: 2px solid var(--color-border, #e2e8f0);
+  border-radius: var(--border-radius);
+  border: 2px solid var(--color-border);
   padding: 16px 18px;
   box-sizing: border-box;
   
@@ -48,35 +45,37 @@
   flex-direction: column;
   justify-content: space-between;
 
-  box-shadow: var(--shadow-cute, 0 4px 6px -1px rgba(0, 0, 0, 0.07));
+  /* Sombra fofa padrão */
+  box-shadow: var(--shadow-cute);
   transition:
-    border-color 0.25s ease,
-    box-shadow 0.25s ease,
-    transform 0.25s ease;
+    border-color 0.3s ease,
+    box-shadow 0.3s ease,
+    transform 0.3s ease;
 }
 
 /* --- Face Frontal --- */
 .flashcard-front {
-  background-color: var(--color-surface, #ffffff);
-  color: var(--color-text, #1e293b);
+  background-color: var(--color-surface);
+  color: var(--color-text);
 }
 
 .flashcard-container:not(.flipped):hover .flashcard-front {
-  border-color: var(--color-primary, #6366f1);
-  box-shadow: 3px 3px 0px var(--color-border, #cbd5e1);
+  border-color: var(--color-primary);
+  /* Efeito Mágico: Combina a sombra sólida com o novo brilho neon! */
+  box-shadow: 4px 4px 0px var(--color-primary-light), var(--shadow-glow);
   transform: translate(-2px, -2px);
 }
 
 /* --- Face Traseira --- */
 .flashcard-back {
-  background-color: var(--color-background, #f8fafc);
-  color: var(--color-text, #1e293b);
+  background-color: var(--color-background);
+  color: var(--color-text);
   transform: rotateY(180deg);
 }
 
 .flashcard-container.flipped:hover .flashcard-back {
-  border-color: var(--color-secondary, #ec4899);
-  box-shadow: -3px 3px 0px var(--color-border, #cbd5e1);
+  border-color: var(--color-secondary);
+  box-shadow: -4px 4px 0px var(--color-secondary), var(--shadow-glow);
   transform: rotateY(180deg) translate(2px, -2px);
 }
 
@@ -98,7 +97,7 @@
   font-weight: 700;
   text-transform: uppercase;
   letter-spacing: 0.6px;
-  border: 1px solid var(--color-border, #e2e8f0);
+  border: 1px solid var(--color-border);
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
@@ -106,20 +105,22 @@
 }
 
 .card-badge {
-  background-color: var(--color-primary-light, #eef2ff);
-  color: var(--color-heading, #312e81);
+  background-color: var(--color-primary-light);
+  color: var(--color-heading);
+  border-color: var(--color-primary);
 }
 
 .card-badge-back {
-  background-color: var(--color-secondary, #fce7f3);
-  color: var(--color-heading, #831843);
+  background-color: transparent;
+  color: var(--color-secondary);
+  border-color: var(--color-secondary);
 }
 
 .back-term-title {
-  font-family: var(--font-heading, inherit);
+  font-family: var(--font-heading);
   font-size: 13px;
   font-weight: 700;
-  color: var(--color-heading, #0f172a);
+  color: var(--color-heading);
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
@@ -131,7 +132,7 @@
 .star-btn {
   background: none;
   border: none;
-  color: var(--color-border, #cbd5e1);
+  color: var(--color-border);
   font-size: 19px;
   cursor: pointer;
   padding: 4px;
@@ -141,17 +142,19 @@
   line-height: 1;
   transition:
     transform 0.2s cubic-bezier(0.175, 0.885, 0.32, 1.275),
-    color 0.2s ease;
+    color 0.2s ease,
+    filter 0.2s ease;
 }
 
 .star-btn:hover {
   transform: scale(1.25);
-  color: #f59e0b;
+  color: var(--color-accent);
 }
 
 .star-active {
-  color: #f59e0b !important;
-  filter: drop-shadow(0 0 4px rgba(245, 158, 11, 0.45));
+  color: var(--color-accent) !important;
+  /* Brilho da estrela usando a cor de accent em vez de laranja fixo */
+  filter: drop-shadow(0 0 6px var(--color-accent)); 
 }
 
 /* 5. ÁREA CENTRAL - FRENTE
@@ -166,8 +169,8 @@
 }
 
 .card-term {
-  font-family: var(--font-heading, inherit);
-  color: var(--color-heading, #0f172a);
+  font-family: var(--font-heading);
+  color: var(--color-heading);
   font-size: 23px;
   font-weight: 700;
   margin: 0;
@@ -189,7 +192,7 @@
   text-align: left;
 }
 
-/* Scrollbar Minimalista */
+/* Scrollbar Mágica Minimalista */
 .card-content-scroll::-webkit-scrollbar {
   width: 4px;
 }
@@ -199,12 +202,12 @@
 }
 
 .card-content-scroll::-webkit-scrollbar-thumb {
-  background-color: var(--color-border, #cbd5e1);
+  background-color: var(--color-border);
   border-radius: 10px;
 }
 
 .card-content-scroll::-webkit-scrollbar-thumb:hover {
-  background-color: var(--color-primary, #6366f1);
+  background-color: var(--color-tertiary); /* Lilás no hover da scrollbar! */
 }
 
 /* 7. BLOCOS DE INFORMAÇÃO (SIGNIFICADO, ANALOGIA, EXEMPLO)
@@ -219,66 +222,66 @@
   font-size: 9.5px;
   font-weight: 800;
   text-transform: uppercase;
-  color: var(--color-primary, #6366f1);
+  color: var(--color-primary);
   letter-spacing: 0.6px;
 }
 
 .tag-analogy {
-  color: #b45309;
+  color: var(--color-accent); 
 }
 
 .tag-example {
-  color: #1d4ed8;
+  color: var(--color-secondary);
 }
 
 .card-meaning {
-  font-family: var(--font-body, inherit);
+  font-family: var(--font-body);
   font-size: 12.5px;
   font-weight: 500;
   line-height: 1.45;
-  color: var(--color-text, #334155);
+  color: var(--color-text);
   margin: 0;
 }
 
 .analogy-box {
-  background-color: var(--color-surface, #ffffff);
+  background-color: var(--color-surface);
   padding: 6px 10px;
   border-radius: 8px;
-  border: 1px solid rgba(245, 158, 11, 0.2);
-  border-left: 3px solid #f59e0b;
+  border: 1px solid var(--color-border);
+  border-left: 3px solid var(--color-accent); /* Linha amarela estrela */
 }
 
 .card-analogy {
-  font-family: var(--font-body, inherit);
+  font-family: var(--font-body);
   font-style: italic;
   font-size: 12px;
   line-height: 1.4;
-  color: var(--color-text, #334155);
+  color: var(--color-text);
   margin: 0;
 }
 
 .example-box {
-  background-color: var(--color-surface, #ffffff);
+  background-color: var(--color-surface);
   padding: 6px 10px;
   border-radius: 8px;
-  border: 1px dashed var(--color-border, #cbd5e1);
+  border: 1px dashed var(--color-tertiary); /* Borda lilás tracejada fofa */
 }
 
 .card-example {
-  font-family: var(--font-mono, monospace);
+  font-family: monospace; /* Fonte mono padrão do sistema */
   font-size: 11.5px;
   line-height: 1.4;
-  color: var(--color-text, #334155);
+  color: var(--color-text);
   margin: 0;
 }
 
 /* 8. RODAPÉ DO CARD (DICA DE CLIQUE)
    -------------------------------------------------------------------------- */
 .card-tip {
-  font-family: var(--font-body, inherit);
+  font-family: var(--font-body);
   font-weight: 700;
   font-size: 9.5px;
-  color: var(--color-primary, #6366f1);
+  color: var(--color-tertiary); /* Substituído para o lilás para não pesar tanto com o rosa */
   text-transform: uppercase;
   letter-spacing: 0.8px;
   text-align: center;

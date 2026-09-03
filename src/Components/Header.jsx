@@ -27,7 +27,7 @@ function Header() {
           <span className="icon-wrapper">
             <FaPenToSquare />
           </span>
-          <span className="text-wrapper">Quiz</span>
+          <span className="text-wrapper">Fixação</span>
         </Link>
       </nav>
     </header>

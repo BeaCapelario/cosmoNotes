@@ -88,7 +88,7 @@ function FlashCard({
             {/* 3. Exemplo */}
             {temExemplo && (
               <div className="info-section example-box">
-                <span className="section-tag tag-example">💻 Exemplo Prático</span>
+                <span className="section-tag tag-example"> Exemplo Prático</span>
                 <p className="card-example">{exemplo}</p>
               </div>
             )}

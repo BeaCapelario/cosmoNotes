@@ -1,6 +1,9 @@
 import React from "react";
 import HeroBanner from "../../../Components/HeroBanner";
 import TopicButton from "../../../Components/TopicButton";
+import NAS from "./Nas";
+import SAN from "./San";
+import RedeSan from "./RedeSan";
 import "../page-layout.css";
 
 export default function TopicSistemasOperacionais() {

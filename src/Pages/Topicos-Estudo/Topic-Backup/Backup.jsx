@@ -1,6 +1,8 @@
 import React from "react";
 import HeroBanner from "../../../Components/HeroBanner";
 import TopicButton from "../../../Components/TopicButton";
+import BackupVeeam from "./BackupVeeam";
+import BackupTSM from "./BackupTSM";
 import "../page-layout.css";
 
 export default function TopicBackup() {
@@ -26,7 +28,7 @@ export default function TopicBackup() {
         <h2 className="section-title">Tópicos para estudo</h2>
         <div className="topic-grid">
           <TopicButton titulo="Backup Veeam" linkTo="/backup-veeam" />
-          <TopicButton titulo="Backup IBM TSM" linkTo="/backup-tsm" />
+          <TopicButton titulo="Backup TSM" linkTo="/backup-tsm" />
         </div>
       </section>
     </main>

@@ -1,3 +1,7 @@
+/* ==========================================================================
+   HOME COMPONENT STYLES - cosmoNotes ✨
+   ========================================================================== */
+
 .home-main {
   flex: 1;
   width: 100%;
@@ -8,6 +12,9 @@
   flex-direction: column;
   gap: 60px;
   box-sizing: border-box;
+  
+  /* Animação suave de entrada para a página inteira */
+  animation: slideUpFade 0.6s cubic-bezier(0.175, 0.885, 0.32, 1.275) forwards;
 }
 
 .welcome-section {
@@ -15,53 +22,80 @@
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: 16px;
+  gap: 18px; /* Levemente aumentado para respirar melhor */
 }
 
+/* Badge de Boas-Vindas */
 .welcome-badge {
-  background-color: var(--color-primary-light);
-  color: var(--color-heading);
-  padding: 6px 16px;
-  border-radius: 20px;
+  background-color: var(--color-surface);
+  color: var(--color-primary);
+  padding: 8px 20px;
+  border-radius: 24px; /* Formato de pílula arredondada */
   font-family: var(--font-body);
-  font-size: 13px;
-  font-weight: 700;
-  letter-spacing: 0.5px;
+  font-size: 13.5px;
+  font-weight: 800;
+  letter-spacing: 0.8px;
   text-transform: uppercase;
-  border: 1px solid var(--color-border);
+  border: 2px solid var(--color-border); /* 2px padrão da nossa UI */
+  box-shadow: var(--shadow-cute);
 }
 
+/* Título Gigante Mágico */
 .welcome-title {
   font-family: var(--font-heading);
-  color: var(--color-primary);
-  font-size: 56px;
+  font-size: 58px; /* Levemente maior */
   margin: 0;
-  line-height: 1.1;
-  text-shadow: 4px 4px 0px var(--color-border);
+  line-height: 1.15;
+  letter-spacing: -1px;
+  
+  /* Aplicando o Gradiente Mágico no Texto! */
+  background: var(--gradient-magic);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  
+  /* Como usamos background-clip, o text-shadow normal não funciona bem, usamos filter: */
+  filter: drop-shadow(4px 4px 0px var(--color-border));
 }
 
 .welcome-subtitle {
   font-family: var(--font-body);
   color: var(--color-text);
   font-size: 18px;
-  font-weight: 500;
+  font-weight: 600; /* Mais encorpado para melhor leitura */
   max-width: 600px;
   line-height: 1.6;
   margin: 0;
+  opacity: 0.9;
 }
 
 .topics-section {
   display: flex;
   flex-direction: column;
-  gap: 24px;
+  gap: 28px;
 }
 
 .section-title {
   font-family: var(--font-heading);
   color: var(--color-heading);
-  font-size: 28px;
+  font-size: 32px;
   margin: 0;
   text-align: center;
+  position: relative;
+  display: inline-block;
+  align-self: center; /* Centraliza no flex column */
+}
+
+/* Detalhe extra: Uma linha pontilhada mágica embaixo do título da seção */
+.section-title::after {
+  content: "";
+  display: block;
+  width: 40px;
+  height: 4px;
+  background-color: var(--color-accent); /* Amarelo estrela */
+  margin: 8px auto 0 auto;
+  border-radius: 4px;
+  box-shadow: 0 0 8px rgba(255, 209, 102, 0.6);
 }
 
 .topic-grid {
@@ -69,7 +103,49 @@
   flex-direction: row;
   justify-content: center;
   align-items: center;
-  gap: 20px;
+  gap: 24px; /* Mais espaço para os botões respirarem e a sombra neon brilhar */
   width: 100%;
   flex-wrap: wrap;
+}
+
+/* ==========================================================================
+   ANIMAÇÕES ESPECIAIS DA HOME 🌟
+   ========================================================================== */
+
+/* Entrada da página inteira */
+@keyframes slideUpFade {
+  0% {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Flutuação suave infinita para o badge */
+@keyframes floatMagic {
+  0%, 100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-5px);
+  }
+}
+
+/* Responsividade Básica da Home */
+@media (max-width: 768px) {
+  .welcome-title {
+    font-size: 42px;
+    filter: drop-shadow(2px 2px 0px var(--color-border));
+  }
+  
+  .welcome-subtitle {
+    font-size: 16px;
+  }
+  
+  .home-main {
+    padding: 40px 16px;
+  }
 }

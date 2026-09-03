@@ -1,29 +1,72 @@
 @import url('https://fonts.googleapis.com/css2?family=Fredoka+One&family=Quicksand:wght@400;500;700&display=swap');
 
+/* ==========================================================================
+   VARIÁVEIS E TEMAS (Light / Dark)
+   ========================================================================== */
 :root {
-  /* 1. Paleta de Cores */
-  --color-background: #F9F4FF;
+  /* Cores de Fundo e Texto */
+  --color-background: #FAF5FF;
   --color-surface: #FFFFFF;
-  --color-text: #4A4063;
-  --color-heading: #2E2545;
-  --color-primary: #FF79C6;
-  --color-primary-light: #FFB8E2;
-  --color-secondary: #00F5D4;
-  --color-accent: #FFEE58;
-  --color-border: #E8DFF5;
-  --gradient-magic: linear-gradient(135deg, var(--color-primary), var(--color-secondary));
+  --color-text: #4A3F63;
+  --color-heading: #2D1B4E;
 
-  /* 2. Tipografia */
+  /* Cores Principais */
+  --color-primary: #FF65A3;
+  --color-primary-light: #FFBCE1;
+  --color-secondary: #00E6CC;
+  --color-tertiary: #B388EB;
+  --color-accent: #FFD166;
+  --color-border: #E8DFF5;
+
+  /* Gradientes e Efeitos */
+  --gradient-magic: linear-gradient(135deg, var(--color-primary), var(--color-tertiary), var(--color-secondary));
+  --gradient-stardust: radial-gradient(circle, var(--color-accent) 0%, transparent 70%);
+
+  /* Tipografia */
   --font-body: 'Quicksand', system-ui, sans-serif;
   --font-heading: 'Fredoka One', cursive;
-  
-  /* 3. Utilitários */
-  --shadow-cute: 6px 6px 0px var(--color-border); 
-  --border-radius: 12px; 
+
+  /* Utilitários Visuais */
+  --border-radius: 16px;
+  --shadow-cute: 6px 6px 0px #D8CBEF;
+  --shadow-glow: 0 0 15px rgba(255, 101, 163, 0.4);
+}
+
+[data-theme="dark"] {
+  --color-background: #140D26;
+  --color-surface: #24183D;
+  --color-text: #E6DFF0;
+  --color-heading: #FFFFFF;
+
+  --color-primary: #FF73B3;
+  --color-primary-light: #4A2645;
+  --color-secondary: #00F5D4;
+  --color-tertiary: #C4A1FF;
+  --color-accent: #FFE159;
+  --color-border: #3D2B59;
+
+  --gradient-magic: linear-gradient(135deg, var(--color-primary), var(--color-secondary));
+
+  --shadow-cute: 6px 6px 0px #090514;
+  --shadow-glow: 0 0 20px rgba(0, 245, 212, 0.3);
+}
+
+/* ==========================================================================
+   RESET E REGRAS GLOBAIS
+   ========================================================================== */
+*, *::before, *::after {
+  box-sizing: border-box;
+}
+
+html, body {
+  margin: 0;
+  padding: 0;
+  width: 100%;
+  overflow-x: hidden;
+  min-height: 100%;
 }
 
 body {
-  margin: 0;
   font-family: var(--font-body);
   font-size: 18px;
   line-height: 1.6;
@@ -31,26 +74,65 @@ body {
   background-color: var(--color-background);
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  transition: background-color 0.4s ease, color 0.4s ease;
 }
 
+/* ==========================================================================
+   TIPOGRAFIA & SELEÇÃO
+   ========================================================================== */
 h1, h2, h3, h4, h5 {
   font-family: var(--font-heading);
   color: var(--color-heading);
-  letter-spacing: 1px; 
+  letter-spacing: 1px;
+  margin-top: 0;
 }
 
-html, body {
-  margin: 0;
-  padding: 0;
-  height: 100%;
+::selection {
+  background-color: var(--color-primary-light);
+  color: var(--color-heading);
 }
 
+[data-theme="dark"] ::selection {
+  background-color: var(--color-tertiary);
+  color: #FFFFFF;
+}
+
+/* ==========================================================================
+   ESTRUTURA DO LAYOUT (Sticky Footer & Contenção)
+   ========================================================================== */
 #root {
-  min-height: 100vh; 
+  min-height: 100vh;
+  width: 100%;
   display: flex;
   flex-direction: column;
 }
 
-main, .content, .container { 
-  flex: 1; /* Faz o conteúdo principal esticar e ocupar todo o espaço vazio restante */
+main, .content, .container {
+  flex: 1;
+  width: 100%;
+}
+
+footer, .footer-container {
+  width: 100%;
+}
+
+/* ==========================================================================
+    CUSTOM SCROLLBAR
+   ========================================================================== */
+::-webkit-scrollbar {
+  width: 10px;
+}
+
+::-webkit-scrollbar-track {
+  background: var(--color-background);
+}
+
+::-webkit-scrollbar-thumb {
+  background-color: var(--color-border);
+  border-radius: 10px;
+  border: 2px solid var(--color-background);
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background-color: var(--color-primary);
 }

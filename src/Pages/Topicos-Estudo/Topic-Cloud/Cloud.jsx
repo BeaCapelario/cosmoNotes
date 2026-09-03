@@ -1,6 +1,8 @@
 import React from "react";
 import HeroBanner from "../../../Components/HeroBanner";
 import TopicButton from "../../../Components/TopicButton";
+import IaaS from "./FundamentosIaas";
+import OpenStack from "./OpenStack";
 import "../page-layout.css";
 
 export default function TopicCloud() {

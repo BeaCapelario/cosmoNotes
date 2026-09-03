@@ -4,24 +4,25 @@
   padding: 40px 24px;
   font-family: var(--font-body);
   border-bottom: 2px solid var(--color-border);
-  transition: all 0.25s ease-in-out;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  position: relative;
+  overflow: hidden; 
 }
 
 .hero-container {
   max-width: 1100px;
   margin: 0 auto;
+  position: relative;
+  z-index: 2;
 }
 
-/* -------------------------------------------------------------
- * Variantes de Temas usando os Tokens de Cor do Projeto
- * ----------------------------------------------------------- */
+/*Variantes de Temas*/
 
-/* 1. Surface (Padrão: Fundo limpo, texto legível e card com sombra cute) */
+/* 1. Surface (Padrão: Fundo limpo, texto legível e clean) */
 .hero-variant-surface {
   background-color: var(--color-surface);
   color: var(--color-text);
 }
-
 .hero-variant-surface .hero-title {
   color: var(--color-heading);
 }
@@ -29,29 +30,32 @@
 /* 2. Magic Gradient (Destaque principal do site) */
 .hero-variant-magic {
   background: var(--gradient-magic);
-  color: var(--color-heading);
+  color: #FFFFFF; /* Branco para garantir a leitura perfeita por cima do arco-íris */
 }
-
 .hero-variant-magic .hero-title {
-  color: var(--color-heading);
+  color: #FFFFFF;
+  text-shadow: 2px 2px 0px rgba(0, 0, 0, 0.1); /* Sombra fofa para destacar o título */
 }
-
+.hero-variant-magic .hero-description {
+  color: rgba(255, 255, 255, 0.95);
+  font-weight: 600;
+}
 .hero-variant-magic .hero-separator,
 .hero-variant-magic .hero-link {
-  color: rgba(46, 37, 69, 0.7);
+  color: rgba(255, 255, 255, 0.85);
 }
-
 .hero-variant-magic .hero-current {
-  color: var(--color-heading);
+  color: #FFFFFF;
   font-weight: 700;
 }
 
-/* 3. Primary (Rosa suave marcante) */
+/* 3. Primary (Rosa/Fofo marcante) */
 .hero-variant-primary {
   background-color: var(--color-primary-light);
   color: var(--color-heading);
+  /* Adicionando o brilho estelar como textura sutil de fundo! */
+  background-image: var(--gradient-stardust);
 }
-
 .hero-variant-primary .hero-title {
   color: var(--color-heading);
 }
@@ -59,24 +63,19 @@
 /* 4. Dark (Focado em contraste profundo) */
 .hero-variant-dark {
   background-color: var(--color-heading);
-  color: var(--color-background);
+  color: var(--color-background); 
 }
-
 .hero-variant-dark .hero-title {
   color: #ffffff;
 }
-
 .hero-variant-dark .hero-description {
   color: var(--color-border);
 }
-
 .hero-variant-dark .hero-link {
-  color: var(--color-primary-light);
+  color: var(--color-tertiary); 
 }
 
-/* -------------------------------------------------------------
- * Tipografia e Elementos Internos
- * ----------------------------------------------------------- */
+/* Tipografia e Elementos Internos*/
 
 .hero-title {
   font-family: var(--font-heading);
@@ -107,12 +106,12 @@
 .hero-link {
   color: var(--color-primary);
   text-decoration: none;
-  transition: opacity 0.15s ease;
+  transition: all 0.2s ease;
 }
 
 .hero-link:hover {
   text-decoration: underline;
-  opacity: 0.8;
+  color: var(--color-tertiary); 
 }
 
 .hero-separator {
@@ -124,12 +123,26 @@
   color: var(--color-heading);
 }
 
-/* Botões e Tags dentro de 'children' */
+/* Botões e Tags  */
 .hero-actions {
   display: flex;
   flex-wrap: wrap;
   gap: 12px;
   margin-top: 14px;
+}
+
+/* Badge Categoria  */
+.badge-category {
+  background-color: var(--color-surface);
+  color: var(--color-heading);
+  padding: 6px 14px;
+  border-radius: 20px; 
+  box-shadow: var(--shadow-cute);
+  font-size: 0.8rem;
+  font-weight: 700;
+  display: inline-block;
+  border: 2px solid var(--color-border); 
+  letter-spacing: 0.5px;
 }
 
 /* Responsividade */
@@ -140,17 +153,4 @@
   .hero-title {
     font-size: 1.75rem;
   }
-}
-
-.badge-category {
-  background-color: var(--color-surface);
-  color: var(--color-heading);
-  padding: 6px 14px;
-  border-radius: var(--border-radius);
-  box-shadow: var(--shadow-cute);
-  font-size: 0.8rem;
-  font-weight: 700;
-  display: inline-block;
-  border: 1px solid var(--color-border);
-  letter-spacing: 0.5px;
 }
