@@ -1,7 +1,7 @@
-@import url('https://fonts.googleapis.com/css2?family=Fredoka+One&family=Quicksand:wght@400;500;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Fredoka+One&family=Quicksand:wght@500;600;700&display=swap');
 
 /* ==========================================================================
-   VARIÁVEIS E TEMAS (Light / Dark)
+   VARIÁVEIS DE TEMA (LIGHT MODE - PADRÃO)
    ========================================================================== */
 :root {
   /* Cores de Fundo e Texto */
@@ -32,6 +32,9 @@
   --shadow-glow: 0 0 15px rgba(255, 101, 163, 0.4);
 }
 
+/* ==========================================================================
+   VARIÁVEIS DE TEMA (DARK MODE - CÓSMICO)
+   ========================================================================== */
 [data-theme="dark"] {
   --color-background: #140D26;
   --color-surface: #24183D;
@@ -52,7 +55,7 @@
 }
 
 /* ==========================================================================
-   RESET E REGRAS GLOBAIS
+   RESET & BASE
    ========================================================================== */
 *, *::before, *::after {
   box-sizing: border-box;
@@ -117,7 +120,7 @@ footer, .footer-container {
 }
 
 /* ==========================================================================
-    CUSTOM SCROLLBAR
+   CUSTOM SCROLLBAR
    ========================================================================== */
 ::-webkit-scrollbar {
   width: 10px;

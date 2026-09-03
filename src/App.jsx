@@ -1,19 +1,24 @@
 // Bibliotecas externas e Hooks (React, Router, etc.)
 import React from "react";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom"; 
+import ReactDOM from 'react-dom/client';
+
 // Componentes Estruturais / Compartilhados (Layout)
 import Header from "./Components/Header";
 import Footer from "./Components/Footer";
+
 // Páginas Principais (Navegação Global)
 import Home from "./Pages/Home/Home";
 import Dicionario from "./Pages/Dicionario/Dicionario";
 import Exercicios from "./Pages/Exercicios/Exercicios";
+
 // Módulos e Tópicos de Estudo (Gerais)
 import TopicHardware from "./Pages/Topicos-Estudo/Topic-Hardware/Hardware";
 import TopicSistemasOperacionais from "./Pages/Topicos-Estudo/Topic-SO/SistemasOperacionais";
 import TopicArmazenamento from "./Pages/Topicos-Estudo/Topic-NAS_SAN/Armazenamento";
 import TopicBackup from "./Pages/Topicos-Estudo/Topic-Backup/Backup";
 import TopicCloud from "./Pages/Topicos-Estudo/Topic-Cloud/Cloud";
+
 // Subtópicos / Detalhamentos Específicos
 import HardwareHPE from "./Pages/Topicos-Estudo/Topic-Hardware/HardwareHPE";
 import VMware from "./Pages/Topicos-Estudo/Topic-Hardware/Vmware";
@@ -28,8 +33,18 @@ import BackupTSM from "./Pages/Topicos-Estudo/Topic-Backup/BackupTSM";
 import BackupVeeam from "./Pages/Topicos-Estudo/Topic-Backup/BackupVeeam";
 import IaaS from "./Pages/Topicos-Estudo/Topic-Cloud/FundamentosIaas";
 import OpenStack from "./Pages/Topicos-Estudo/Topic-Cloud/OpenStack";
+
 // Arquivos de Estilo Global e Ativos
 import "./index.css";
+import { ThemeProvider } from './context/ThemeContext';
+
+ReactDOM.createRoot(document.getElementById('root')).render(
+  <React.StrictMode>
+    <ThemeProvider>
+      <App />
+    </ThemeProvider>
+  </React.StrictMode>
+);
 
 function App() {
   return (

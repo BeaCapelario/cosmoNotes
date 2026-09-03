@@ -111,3 +111,16 @@
     opacity 0.3s ease-in-out 0.1s, 
     max-width 0.4s ease;
 }
+
+/* --- Reset específico para o botão de tema que usa a classe .hover-link --- */
+button.hover-link {
+  cursor: pointer;
+  outline: none;
+  font: inherit;
+  border: 2px solid var(--color-border);
+}
+
+/* Opcional: Efeito no clique ativo */
+.hover-link:active {
+  transform: translateY(-1px) scale(0.98);
+}
